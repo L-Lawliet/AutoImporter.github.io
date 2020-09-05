@@ -1,0 +1,1028 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docsy – Welcome to Docsy</title><link>/docs/</link><description>Recent content in Welcome to Docsy on Docsy</description><generator>Hugo -- gohugo.io</generator><atom:link href="/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Adding Content</title><link>/docs/adding-content/content/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/adding-content/content/</guid><description>
+&lt;p>So you&amp;rsquo;ve got a new Hugo website with Docsy, now it&amp;rsquo;s time to add some content! This page tells you how to use the theme to add and structure your site content.&lt;/p>
+&lt;h2 id="content-root-directory">Content root directory&lt;/h2>
+&lt;p>You add content for your site under the &lt;strong>content root directory&lt;/strong> of your Hugo site project - either &lt;code>content/&lt;/code> or a &lt;a href="/docs/language/">language-specific&lt;/a> root like &lt;code>content/en/&lt;/code>. The main exception here is static files that you don&amp;rsquo;t want built into your site: you can find out more about where you add these below in &lt;a href="#adding-static-content">Adding static content&lt;/a>. The files in your content root directory are typically grouped in subdirectories corresponding to your site&amp;rsquo;s sections and templates, which we&amp;rsquo;ll look at in &lt;a href="#content-sections-and-templates">Content sections and templates&lt;/a>.&lt;/p>
+&lt;p>You can find out more about Hugo directory structure in &lt;a href="https://gohugo.io/getting-started/directory-structure/#directory-structure-explained">Directory Structure Explained&lt;/a>.&lt;/p>
+&lt;h2 id="content-sections-and-templates">Content sections and templates&lt;/h2>
+&lt;p>Hugo builds your site pages using the content files you provide plus any templates provided by your site&amp;rsquo;s theme. These templates (or &lt;em>&amp;ldquo;layouts&amp;rdquo;&lt;/em> in Hugo terminology) include things like your page&amp;rsquo;s headers, footers, navigation, and links to stylesheets: essentially, everything except your page&amp;rsquo;s specific content. The templates in turn can be made up of &lt;em>partials&lt;/em>: little reusable snippets of HTML for page elements like headers, search boxes, and more.&lt;/p>
+&lt;p>Because most technical documentation sites have different sections for different types of content, the Docsy theme comes with the &lt;a href="https://github.com/google/docsy/tree/master/layouts">following templates&lt;/a> for top-level site sections that you might need:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/google/docsy/tree/master/layouts/docs">&lt;code>docs&lt;/code>&lt;/a> is for pages in your site&amp;rsquo;s Documentation section.&lt;/li>
+&lt;li>&lt;a href="https://github.com/google/docsy/tree/master/layouts/blog">&lt;code>blog&lt;/code>&lt;/a> is for pages in your site&amp;rsquo;s Blog.&lt;/li>
+&lt;li>&lt;a href="https://github.com/google/docsy/tree/master/layouts/community">&lt;code>community&lt;/code>&lt;/a> is for your site&amp;rsquo;s Community page.&lt;/li>
+&lt;/ul>
+&lt;p>It also provides a &lt;a href="https://github.com/google/docsy/tree/master/layouts/_default">default &amp;ldquo;landing page&amp;rdquo; type of template&lt;/a> with the site header and footer, but no left nav, that you can use for any other section. In this site and our example site it&amp;rsquo;s used for the site &lt;a href="/">home page&lt;/a> and the &lt;a href="/about/">About&lt;/a> page.&lt;/p>
+&lt;p>Each top-level &lt;strong>section&lt;/strong> in your site corresponds to a &lt;strong>directory&lt;/strong> in your site content root. Hugo automatically applies the appropriate &lt;strong>template&lt;/strong> for that section, depending on which folder the content is in. For example, this page is in the &lt;code>docs&lt;/code> subdirectory of the site&amp;rsquo;s content root directory &lt;code>content/en/&lt;/code>, so Hugo automatically applies the &lt;code>docs&lt;/code> template. You can override this by explicitly specifying a template or content type for a particular page.&lt;/p>
+&lt;p>If you&amp;rsquo;ve copied the example site, you already have appropriately named top-level section directories for using Docsy&amp;rsquo;s templates, each with an index page ( &lt;code>_index.md&lt;/code> or &lt;code>index.html&lt;/code>) page for users to land on. These top-level sections also appear in the example site&amp;rsquo;s &lt;a href="/docs/adding-content/navigation/#top-level-menu">top-level menu&lt;/a>.&lt;/p>
+&lt;h3 id="custom-sections">Custom sections&lt;/h3>
+&lt;p>If you&amp;rsquo;ve copied the example site and &lt;em>don&amp;rsquo;t&lt;/em> want to use one of the provided content sections, just delete the appropriate content subdirectory. Similarly, if you want to add a top-level section, just add a new subdirectory, though you&amp;rsquo;ll need to specify the layout or content type explicitly in the &lt;a href="#page-frontmatter">frontmatter&lt;/a> of each page if you want to use any existing Docsy template other than the default one. For example, if you create a new directory &lt;code>content/en/amazing&lt;/code> and want one or more pages in that custom section to use Docsy&amp;rsquo;s &lt;code>docs&lt;/code> template, you add &lt;code>type: docs&lt;/code> to the frontmatter of each page:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">---&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">title&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;My amazing new section&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">weight&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">type&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>docs&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">description&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#8f5902;font-style:italic">&amp;gt;
+&lt;/span>&lt;span style="color:#8f5902;font-style:italic"> A special section with a docs layout.&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>---&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Alternatively, create your own page template for your new section in your project&amp;rsquo;s &lt;code>layouts&lt;/code> directory based on one of the existing templates.&lt;/p>
+&lt;p>You can find out much more about how Hugo page layouts work in &lt;a href="https://gohugo.io/templates/">Hugo Templates&lt;/a>. The rest of this page tells you about how to add content and use each of Docsy&amp;rsquo;s templates.&lt;/p>
+&lt;h2 id="page-frontmatter">Page frontmatter&lt;/h2>
+&lt;p>Each page file in a Hugo site has metadata frontmatter that tells Hugo about the page. You specify page frontmatter in TOML, YAML, or JSON (our example site and this site use YAML). Use the frontmatter to specify the page title, description, creation date, link title, template, menu weighting, and even any resources such as images used by the page. You can see a complete list of possible page frontmatter in &lt;a href="https://gohugo.io/content-management/front-matter/">Front Matter&lt;/a>.&lt;/p>
+&lt;p>For example, here&amp;rsquo;s the frontmatter for this page:&lt;/p>
+&lt;pre>&lt;code>---
+title: &amp;quot;Adding Content&amp;quot;
+linkTitle: &amp;quot;Adding Content&amp;quot;
+weight: 1
+description: &amp;gt;
+How to add content to your Docsy site.
+---
+&lt;/code>&lt;/pre>&lt;p>The minimum frontmatter you need to provide is a title: everything else is up to you! (though if you leave out the page weight your &lt;a href="/docs/adding-content/navigation">navigation&lt;/a> may get a little disorganized).&lt;/p>
+&lt;h2 id="page-contents-and-markup">Page contents and markup&lt;/h2>
+&lt;p>By default you create pages in a Docsy site as simple &lt;a href="https://gohugo.io/content-management/formats/">Markdown or HTML files&lt;/a> with &lt;a href="#page-frontmatter">page frontmatter&lt;/a>, as described above. Versions of Hugo before 0.60 use &lt;a href="https://github.com/russross/blackfriday">BlackFriday&lt;/a> as its Markdown parser. From 0.60, Hugo uses &lt;a href="https://github.com/yuin/goldmark/">Goldmark&lt;/a> as its Markdown parser by default.&lt;/p>
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Tip&lt;/h4>
+&lt;p>If you&amp;rsquo;ve been using earlier versions of Hugo, you may need to make some small changes to your site to work with the current Markdown parser. In particular, if you cloned an earlier version of our example site, add the following to your &lt;code>config.toml&lt;/code> to allow Goldmark to render raw HTML as well as Markdown:&lt;/p>
+&lt;pre>&lt;code>[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+&lt;/code>&lt;/pre>&lt;p>Alternatively, if you want to continue using Blackfriday, you can follow the instructions in the &lt;a href="https://gohugo.io/getting-started/configuration-markup#blackfriday">Hugo documentation&lt;/a> to change the Markdown parser.&lt;/p>
+&lt;/div>
+&lt;p>In addition to your marked-up text, you can also use Hugo and Docsy&amp;rsquo;s &lt;a href="/docs/adding-content/shortcodes">shortcodes&lt;/a>: reusable chunks of HTML that you can use to quickly build your pages. Find out more about shortcodes in &lt;a href="/docs/adding-content/shortcodes">Docsy Shortcodes&lt;/a>.&lt;/p>
+&lt;div class="alert alert-info" role="alert">
+&lt;h4 class="alert-heading">Note&lt;/h4>
+&lt;p>Hugo also supports adding content using other markups using &lt;a href="https://gohugo.io/content-management/formats/#additional-formats-through-external-helpers">external parsers as helpers&lt;/a>. For example, you can add content in RST using &lt;code>rst2html&lt;/code> as an external parser (though be aware this does not support all flavors of RST, such as Sphinx RST). Similarly, you can use &lt;code>asciidoctor&lt;/code> to parse Asciidoc files, or &lt;code>pandoc&lt;/code> for other formats.&lt;/p>
+&lt;p>External parsers may not be suitable for use with all deployment options, as you&amp;rsquo;ll need to install the external parser and run Hugo yourself to generate your site (so, for example, you won&amp;rsquo;t be able to use &lt;a href="/docs/deployment/#deployment-with-netlify">Netlify&amp;rsquo;s continuous deployment feature&lt;/a>). In addition, adding an external parser may cause performance issues building larger sites.&lt;/p>
+&lt;/div>
+&lt;h3 id="working-with-links">Working with links&lt;/h3>
+&lt;p>Hugo lets you specify links using normal Markdown syntax, though remember that you need to specify links relative to your site&amp;rsquo;s root URL, and that relative URLs are left unchanged by Hugo in your site&amp;rsquo;s generated HTML.&lt;/p>
+&lt;p>Alternatively you can use Hugo&amp;rsquo;s helper &lt;a href="https://gohugo.io/content-management/cross-references/">&lt;code>ref&lt;/code> and &lt;code>relref&lt;/code> shortcodes&lt;/a> for creating internal links that resolve to the correct URL. However, be aware this means your links will not appear as links at all if a user views your page outside your generated site, for example using the rendered Markdown feature in GitHub&amp;rsquo;s web UI.&lt;/p>
+&lt;p>You can find (or add!) tips and gotchas for working with Hugo links in &lt;a href="/docs/best-practices/site-guidance">Hugo Tips&lt;/a>.&lt;/p>
+&lt;h3 id="content-style">Content style&lt;/h3>
+&lt;p>We don&amp;rsquo;t mandate any particular style for your page contents. However, if you&amp;rsquo;d like some guidance on how to write and format clear, concise technical documentation, we recommend the &lt;a href="https://developers.google.com/style/">Google Developer Documentation Style Guide&lt;/a>, particularly the &lt;a href="https://developers.google.com/style/highlights">Style Guide Highlights&lt;/a>.&lt;/p>
+&lt;h2 id="page-bundles">Page bundles&lt;/h2>
+&lt;p>You can create site pages as standalone files in their section or subsection directory, or as folders where the content is in the folder&amp;rsquo;s index page. Creating a folder for your page lets you &lt;a href="https://gohugo.io/content-management/page-bundles/">bundle&lt;/a> images and other resources together with the content.&lt;/p>
+&lt;p>You can see examples of both approaches in this and our example site. For example, the source for this page is just a standalone file &lt;code>/content/en/docs/adding-content.md&lt;/code>. However the source for &lt;a href="/docs/adding-content/shortcodes/">Docsy Shortcodes&lt;/a> in this site lives in &lt;code>/content/en/docs/adding-content/shortcodes/index.md&lt;/code>, with the image resource used by the page in the same &lt;code>/shortcodes/&lt;/code> directory. In Hugo terminology, this is called a &lt;em>leaf bundle&lt;/em> because it&amp;rsquo;s a folder containing all the data for a single site page without any child pages (and uses &lt;code>index.md&lt;/code> without an underscore).&lt;/p>
+&lt;p>You can find out much more about managing resources with Hugo bundles in &lt;a href="https://gohugo.io/content-management/page-bundles/">Page Bundles&lt;/a>.&lt;/p>
+&lt;h2 id="adding-docs-and-blog-posts">Adding docs and blog posts&lt;/h2>
+&lt;p>The template you&amp;rsquo;ll probably use most often is the &lt;a href="https://github.com/google/docsy/blob/master/layouts/docs/baseof.html">&lt;code>docs&lt;/code> template&lt;/a> (as used in this page) or the very similar &lt;a href="https://github.com/google/docsy/blob/master/layouts/blog/baseof.html">&lt;code>blog&lt;/code> template&lt;/a>. Both these templates include:&lt;/p>
+&lt;ul>
+&lt;li>a left nav&lt;/li>
+&lt;li>GitHub links (populated from your site config) for readers to edit the page or create issues&lt;/li>
+&lt;li>a page menu&lt;/li>
+&lt;/ul>
+&lt;p>as well as the common header and footer used by all your site&amp;rsquo;s pages. Which template is applied depends on whether you&amp;rsquo;ve added the content to the &lt;code>blog&lt;/code> or &lt;code>docs&lt;/code> content directory. You can find out more about how the nav and page menu are created in &lt;a href="/docs/adding-content/navigation/">Navigation and Search&lt;/a>.&lt;/p>
+&lt;h3 id="organizing-your-documentation">Organizing your documentation&lt;/h3>
+&lt;p>While Docsy&amp;rsquo;s top-level sections let you create site sections for different types of content, you may also want to organize your docs content within your &lt;code>docs&lt;/code> section. For example, this site&amp;rsquo;s &lt;code>docs&lt;/code> section directory has multiple subdirectories for &lt;strong>Getting Started&lt;/strong>, &lt;strong>Content and Customization&lt;/strong>, and so on. Each subdirectory has an &lt;code>_index.md&lt;/code> (it could also be an &lt;code>_index.html&lt;/code>), which acts as a section index page and tells Hugo that the relevant directory is a subsection of your docs.&lt;/p>
+&lt;p>Docsy&amp;rsquo;s &lt;code>docs&lt;/code> layout gives you a left nav pane with an autogenerated nested menu based on your &lt;code>docs&lt;/code> file structure. Each standalone page or subsection &lt;code>_index.md&lt;/code> or &lt;code>_index.html&lt;/code> page in the &lt;code>docs/&lt;/code> directory gets a top level menu item, using the link name and &lt;code>weight&lt;/code> metadata from the page or index.&lt;/p>
+&lt;p>To add docs to a subsection, just add your page files to the relevant subdirectory. Any pages that you add to a subsection in addition to the subsection index page will appear in a submenu (look to the left to see one in action!), again ordered by page &lt;code>weight&lt;/code>. Find out more about adding Docsy&amp;rsquo;s navigation metadata in &lt;a href="/docs/adding-content/navigation/">Navigation and Search&lt;/a>&lt;/p>
+&lt;p>If you&amp;rsquo;ve copied the example site, you&amp;rsquo;ll already have some suggested subdirectories in your &lt;code>docs&lt;/code> directory, with guidance for what types of content to put in them and some example Markdown pages. You can find out more about organizing your content with Docsy in &lt;a href="/docs/best-practices/organizing-content/">Organizing Your Content&lt;/a>.&lt;/p>
+&lt;h4 id="docs-section-landing-pages">Docs section landing pages&lt;/h4>
+&lt;p>By default a docs section landing page (the &lt;code>_index.md&lt;/code> or &lt;code>_index.html&lt;/code> in the section directory) uses a layout that adds a formatted list of links to the pages in the section, with their frontmatter descriptions. The &lt;a href="/docs/adding-content/">Content and Customization&lt;/a> landing page in this site is a good example.&lt;/p>
+&lt;p>To display a simple bulleted list of links to the section&amp;rsquo;s pages instead, specify &lt;code>simple_list: true&lt;/code> in the landing page&amp;rsquo;s frontmatter:&lt;/p>
+&lt;pre>&lt;code>---
+title: &amp;quot;Simple List Page&amp;quot;
+simple_list: true
+weight: 20
+---
+&lt;/code>&lt;/pre>&lt;p>To display no links at all, specify &lt;code>no_list: true&lt;/code> in the landing page&amp;rsquo;s frontmatter:&lt;/p>
+&lt;pre>&lt;code>---
+title: &amp;quot;No List Page&amp;quot;
+no_list: true
+weight: 20
+---
+&lt;/code>&lt;/pre>&lt;h3 id="organizing-your-blog-posts">Organizing your blog posts&lt;/h3>
+&lt;p>Docsy&amp;rsquo;s &lt;code>blog&lt;/code> layout also gives you a left nav menu (like the &lt;code>docs&lt;/code> layout), and a list-type index page for your blog that&amp;rsquo;s applied to &lt;code>/blog/_index.md&lt;/code> and automatically displays snippets of all your recent posts in reverse chronological order.&lt;/p>
+&lt;p>To create different blog categories to organize your posts, create subfolders in &lt;code>blog/&lt;/code>. For instance, in our &lt;a href="https://github.com/google/docsy-example/tree/master/content/en/blog">example site&lt;/a> we have &lt;code>news&lt;/code> and &lt;code>releases&lt;/code>. Each category needs to have its own &lt;code>_index.md&lt;/code> or &lt;code>_index.html&lt;/code> landing page file specifying the category title for it to appear properly in the left nav and top-level blog landing page. Here&amp;rsquo;s the index page for &lt;code>releases&lt;/code>:&lt;/p>
+&lt;pre>&lt;code>---
+title: &amp;quot;New Releases&amp;quot;
+linkTitle: &amp;quot;Releases&amp;quot;
+weight: 20
+---
+&lt;/code>&lt;/pre>&lt;p>To add author and date information to blog posts, add them to the page frontmatter:&lt;/p>
+&lt;pre>&lt;code>---
+date: 2018-10-06
+title: &amp;quot;Easy documentation with Docsy&amp;quot;
+linkTitle: &amp;quot;Announcing Docsy&amp;quot;
+description: &amp;quot;The Docsy Hugo theme lets project maintainers and contributors focus on content, not on reinventing a website infrastructure from scratch&amp;quot;
+author: Riona MacNamara
+resources:
+- src: &amp;quot;**.{png,jpg}&amp;quot;
+title: &amp;quot;Image #:counter&amp;quot;
+params:
+byline: &amp;quot;Photo: Riona MacNamara / CC-BY-CA&amp;quot;
+---
+&lt;/code>&lt;/pre>&lt;p>If you&amp;rsquo;ve copied the example site and you don&amp;rsquo;t want a blog section, or want to link to an external blog instead, just delete the &lt;code>blog&lt;/code> subdirectory.&lt;/p>
+&lt;h2 id="working-with-top-level-landing-pages">Working with top-level landing pages.&lt;/h2>
+&lt;p>Docsy&amp;rsquo;s &lt;a href="https://github.com/google/docsy/blob/master/layouts/docs/baseof.html">default page template&lt;/a> has no left nav and is useful for creating a home page for your site or other &amp;ldquo;landing&amp;rdquo; type pages.&lt;/p>
+&lt;h3 id="customizing-the-example-site-pages">Customizing the example site pages&lt;/h3>
+&lt;p>If you&amp;rsquo;ve copied the example site, you already have a simple site landing page in &lt;code>content/en/_index.html&lt;/code>. This is made up of Docsy&amp;rsquo;s provided Hugo shortcode &lt;a href="/docs/adding-content/shortcodes">page blocks&lt;/a>.&lt;/p>
+&lt;p>To customize the large landing image, which is in a &lt;a href="#blocks-cover">cover&lt;/a> block, replace the &lt;code>content/en/featured-background.jpg&lt;/code> file in your project with your own image (it can be called whatever you like as long as it has &lt;code>background&lt;/code> in the file name). You can remove or add as many blocks as you like, as well as adding your own custom content.&lt;/p>
+&lt;p>The example site also has an About page in &lt;code>content/en/about/_index.html&lt;/code> using the same Docsy template. Again, this is made up of &lt;a href="/docs/adding-content/shortcodes">page blocks&lt;/a>, including another background image in &lt;code>content/en/about/featured-background.jpg&lt;/code>. As with the site landing page, you can replace the image, remove or add blocks, or just add your own content.&lt;/p>
+&lt;h3 id="building-your-own-landing-pages">Building your own landing pages&lt;/h3>
+&lt;p>If you&amp;rsquo;ve just used the theme, you can still use all Docsy&amp;rsquo;s provided &lt;a href="/docs/adding-content/shortcodes">page blocks&lt;/a> (or any other content you want) to build your own landing pages in the same file locations.&lt;/p>
+&lt;h2 id="adding-a-community-page">Adding a community page&lt;/h2>
+&lt;p>The &lt;code>community&lt;/code> landing page template has boilerplate content that&amp;rsquo;s automatically filled in with the project name and community links specified in &lt;code>config.toml&lt;/code>, providing your users with quick links to resources that help them get involved in your project. The same links are also added by default to your site footer.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-toml" data-lang="toml">&lt;span style="color:#000;font-weight:bold">[&lt;/span>&lt;span style="color:#000">params&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">links&lt;/span>&lt;span style="color:#000;font-weight:bold">]&lt;/span>
+&lt;span style="color:#8f5902;font-style:italic"># End user relevant links. These will show up on left side of footer and in the community page if you have one.&lt;/span>
+&lt;span style="color:#000;font-weight:bold">[[&lt;/span>&lt;span style="color:#000">params&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">links&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">user&lt;/span>&lt;span style="color:#000;font-weight:bold">]]&lt;/span>
+&lt;span style="color:#000">name&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;User mailing list&amp;#34;&lt;/span>
+&lt;span style="color:#000">url&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;https://example.org/mail&amp;#34;&lt;/span>
+&lt;span style="color:#000">icon&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;fa fa-envelope&amp;#34;&lt;/span>
+&lt;span style="color:#000">desc&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Discussion and help from your fellow users&amp;#34;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">[[&lt;/span>&lt;span style="color:#000">params&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">links&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">user&lt;/span>&lt;span style="color:#000;font-weight:bold">]]&lt;/span>
+&lt;span style="color:#000">name&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Twitter&amp;#34;&lt;/span>
+&lt;span style="color:#000">url&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;https://example.org/twitter&amp;#34;&lt;/span>
+&lt;span style="color:#000">icon&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;fab fa-twitter&amp;#34;&lt;/span>
+&lt;span style="color:#000">desc&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Follow us on Twitter to get the latest news!&amp;#34;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">[[&lt;/span>&lt;span style="color:#000">params&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">links&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">user&lt;/span>&lt;span style="color:#000;font-weight:bold">]]&lt;/span>
+&lt;span style="color:#000">name&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Stack Overflow&amp;#34;&lt;/span>
+&lt;span style="color:#000">url&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;https://example.org/stack&amp;#34;&lt;/span>
+&lt;span style="color:#000">icon&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;fab fa-stack-overflow&amp;#34;&lt;/span>
+&lt;span style="color:#000">desc&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Practical questions and curated answers&amp;#34;&lt;/span>
+&lt;span style="color:#8f5902;font-style:italic"># Developer relevant links. These will show up on right side of footer and in the community page if you have one.&lt;/span>
+&lt;span style="color:#000;font-weight:bold">[[&lt;/span>&lt;span style="color:#000">params&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">links&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">developer&lt;/span>&lt;span style="color:#000;font-weight:bold">]]&lt;/span>
+&lt;span style="color:#000">name&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;GitHub&amp;#34;&lt;/span>
+&lt;span style="color:#000">url&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;https://github.com/google/docsy&amp;#34;&lt;/span>
+&lt;span style="color:#000">icon&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;fab fa-github&amp;#34;&lt;/span>
+&lt;span style="color:#000">desc&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Development takes place here!&amp;#34;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">[[&lt;/span>&lt;span style="color:#000">params&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">links&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">developer&lt;/span>&lt;span style="color:#000;font-weight:bold">]]&lt;/span>
+&lt;span style="color:#000">name&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Slack&amp;#34;&lt;/span>
+&lt;span style="color:#000">url&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;https://example.org/slack&amp;#34;&lt;/span>
+&lt;span style="color:#000">icon&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;fab fa-slack&amp;#34;&lt;/span>
+&lt;span style="color:#000">desc&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Chat with other project developers&amp;#34;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">[[&lt;/span>&lt;span style="color:#000">params&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">links&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">developer&lt;/span>&lt;span style="color:#000;font-weight:bold">]]&lt;/span>
+&lt;span style="color:#000">name&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Developer mailing list&amp;#34;&lt;/span>
+&lt;span style="color:#000">url&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;https://example.org/mail&amp;#34;&lt;/span>
+&lt;span style="color:#000">icon&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;fa fa-envelope&amp;#34;&lt;/span>
+&lt;span style="color:#000">desc&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Discuss development issues around the project&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>If you&amp;rsquo;re creating your own site and want to add a page using this template, add a &lt;code>/community/_index.md&lt;/code> file in your content root directory. If you&amp;rsquo;ve copied the example site and &lt;em>don&amp;rsquo;t&lt;/em> want a community page, just delete the &lt;code>/content/en/community/&lt;/code> directory in your project repo.&lt;/p>
+&lt;h2 id="adding-static-content">Adding static content&lt;/h2>
+&lt;p>You may want to serve some non-Hugo-built content along with your site: for example, if you have generated reference docs using Doxygen, Javadoc, or other doc generation tools.&lt;/p>
+&lt;p>To add static content to be served &amp;ldquo;as-is&amp;rdquo;, just add the content as a folder and/or files in your site&amp;rsquo;s &lt;code>static&lt;/code> directory. When your site is deployed, content in this directory is served at the site root path. So, for example, if you have added content at &lt;code>/static/reference/cpp/&lt;/code>, users can access that content at &lt;code>http://{server-url}/reference/cpp/&lt;/code> and you can link to pages in this directory from other pages at &lt;code>/reference/cpp/{file name}&lt;/code>.&lt;/p>
+&lt;p>You can also use this directory for other files used by your project, including image files. You can find out more about serving static files, including configuring multiple directories for static content, in &lt;a href="https://gohugo.io/content-management/static-files/">Static Files&lt;/a>.&lt;/p>
+&lt;h2 id="rss-feeds">RSS feeds&lt;/h2>
+&lt;p>Hugo will, by default, create an RSS feed for the home page and any section. For the main RSS feed you can control which sections to include by setting a site param in your &lt;code>config.toml&lt;/code>. This is the default configuration:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-toml" data-lang="toml">&lt;span style="color:#000">rss_sections&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#000;font-weight:bold">[&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;blog&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">]&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>To disable all RSS feeds, add the following to your &lt;code>config.toml&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-toml" data-lang="toml">&lt;span style="color:#000">disableKinds&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#000;font-weight:bold">[&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;RSS&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">]&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="sitemap">Sitemap&lt;/h2>
+&lt;p>Hugo creates a &lt;code>sitemap.xml&lt;/code> file for your generated site by default: for example, &lt;a href="/sitemap.xml">here&amp;rsquo;s the sitemap&lt;/a> for this site.&lt;/p>
+&lt;p>You can configure the frequency with which your sitemap is updated, your sitemap filename, and the default page priority in your &lt;code>config.toml&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-toml" data-lang="toml">&lt;span style="color:#000;font-weight:bold">[&lt;/span>&lt;span style="color:#000">sitemap&lt;/span>&lt;span style="color:#000;font-weight:bold">]&lt;/span>
+&lt;span style="color:#000">changefreq&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;monthly&amp;#34;&lt;/span>
+&lt;span style="color:#000">filename&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;sitemap.xml&amp;#34;&lt;/span>
+&lt;span style="color:#000">priority&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#0000cf;font-weight:bold">0.5&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>To override any of these values for a given page, specify it in page frontmatter:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">---&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">title&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Adding Content&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">linkTitle&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Adding Content&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">weight&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">description&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#8f5902;font-style:italic">&amp;gt;
+&lt;/span>&lt;span style="color:#8f5902;font-style:italic"> Add different types of content to your Docsy site.&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">sitemap&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">priority&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#0000cf;font-weight:bold">1.0&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>---&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>To learn more about configuring sitemaps, see &lt;a href="https://gohugo.io/templates/sitemap-template/">Sitemap Template&lt;/a>.&lt;/p></description></item><item><title>Docs: Look and Feel</title><link>/docs/adding-content/lookandfeel/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>/docs/adding-content/lookandfeel/</guid><description>
+&lt;p>By default, a site using Docsy has the theme&amp;rsquo;s default fonts, colors, and general look and feel. However, if you want your own color scheme (and you probably will!) you can very easily override the theme defaults with your own project-specific values - Hugo will look in your project files first when looking for information to build your site. Also because Docsy uses Bootstrap 4 and SCSS for styling, you can override just single values in its special SCSS project variables file, or do more serious customization by creating your own versions of entire SCSS files.&lt;/p>
+&lt;h2 id="color-palette-and-other-styles">Color palette and other styles&lt;/h2>
+&lt;p>To quickly change your site&amp;rsquo;s colors, add SCSS variable project overrides to &lt;code>assets/scss/_variables_project.scss&lt;/code>. A simple example changing the primary and secondary color to two shades of purple:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-scss" data-lang="scss">&lt;span style="color:#000">$primary&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">:&lt;/span> &lt;span style="color:#0000cf;font-weight:bold">#390040&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;span style="color:#000">$secondary&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">:&lt;/span> &lt;span style="color:#0000cf;font-weight:bold">#A23B72&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>See &lt;code>assets/scss/_variables.scss&lt;/code> in the theme for color variables etc. that can be set to change the look and feel.&lt;/li>
+&lt;li>Also see available variables in Bootstrap 4: &lt;a href="https://getbootstrap.com/docs/4.0/getting-started/theming/">https://getbootstrap.com/docs/4.0/getting-started/theming/&lt;/a> and &lt;a href="https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss">https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>The theme has features suchs as rounded corners and gradient backgrounds enabled by default. These can also be toggled in your project variables file:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-scss" data-lang="scss">&lt;span style="color:#000">$enable-gradients&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">:&lt;/span> &lt;span style="color:#000">true&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;span style="color:#000">$enable-rounded&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">:&lt;/span> &lt;span style="color:#000">true&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;span style="color:#000">$enable-shadows&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">:&lt;/span> &lt;span style="color:#000">true&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Tip&lt;/h4>
+PostCSS (autoprefixing of CSS browser-prefixes) is not enabled when running in server mode (it is a little slow), so Chrome is the recommended choice for development.
+&lt;/div>
+&lt;p>Also note that any SCSS import will try the project before the theme, so you can &amp;ndash; as one example &amp;ndash; create your own &lt;code>_assets/scss/_content.scss&lt;/code> and get full control over how your Markdown content is styled.&lt;/p>
+&lt;h2 id="fonts">Fonts&lt;/h2>
+&lt;p>The theme uses &lt;a href="https://fonts.google.com/specimen/Open+Sans">Open Sans&lt;/a> as its primary font. To disable Google Fonts and use a system font, set this SCSS variable in &lt;code>assets/scss/_variables_project.scss&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-scss" data-lang="scss">&lt;span style="color:#000">$td-enable-google-fonts&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">:&lt;/span> &lt;span style="color:#000">false&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>To configure another Google Font:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-scss" data-lang="scss">&lt;span style="color:#000">$google_font_name&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">:&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Open Sans&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;span style="color:#000">$google_font_family&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">:&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Open+Sans:300,300i,400,400i,700,700i&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Note that if you decide to go with a font with different weights (in the built-in configuration this is &lt;code>300&lt;/code> (light), &lt;code>400&lt;/code> (medium) and &lt;code>700&lt;/code> (bold)), you also need to adjust the weight related variables, i.e. variables starting with &lt;code>$font-weight-&lt;/code>.&lt;/p>
+&lt;h2 id="css-utilities">CSS utilities&lt;/h2>
+&lt;p>For documentation of available CSS utility classes, see the &lt;a href="https://getbootstrap.com/">Bootstrap Documentation&lt;/a>. This theme adds very little on its own in this area. However, we have added some color state CSS classes that can be useful in a dynamic context:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>.-bg-&amp;lt;color&amp;gt;&lt;/code>&lt;/li>
+&lt;li>&lt;code>.-text-&amp;lt;color&amp;gt;&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>You can use these classes, for example, to style your text in an appropriate color when you don&amp;rsquo;t know if the &lt;code>primary&lt;/code> color is dark or light, to ensure proper color contrast. They are also useful when you receive the color code as a &lt;a href="/docs/adding-content/shortcodes/">shortcode&lt;/a> parameter.&lt;/p>
+&lt;p>The value of &lt;code>&amp;lt;color&amp;gt;&lt;/code> can be any of the color names, &lt;code>primary&lt;/code>, &lt;code>white&lt;/code>, &lt;code>dark&lt;/code>, &lt;code>warning&lt;/code>, &lt;code>light&lt;/code>, &lt;code>success&lt;/code>, &lt;code>300&lt;/code>, &lt;code>blue&lt;/code>, &lt;code>orange&lt;/code> etc.&lt;/p>
+&lt;p>When you use &lt;code>.-bg-&amp;lt;color&amp;gt;&lt;/code>, the text colors will be adjusted to get proper contrast:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">div&lt;/span> &lt;span style="color:#c4a000">class&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;-bg-primary p-3 display-4&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>Background: Primary&lt;span style="color:#000;font-weight:bold">&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">div&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">div&lt;/span> &lt;span style="color:#c4a000">class&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;-bg-200 p-3 display-4&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>Background: Gray 200&lt;span style="color:#000;font-weight:bold">&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">div&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;div class="-bg-primary p-3 display-4 w-75">Background: Primary&lt;/div>
+&lt;div class="-bg-200 p-3 display-4 mb-5 w-50 w-75">Background: Gray 200&lt;/div>
+&lt;p>&lt;code>.-text-&amp;lt;color&amp;gt;&lt;/code> sets the text color only:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">div&lt;/span> &lt;span style="color:#c4a000">class&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;-text-blue pt-3 display-4&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>Text: Blue&lt;span style="color:#000;font-weight:bold">&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">div&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;div class="-text-blue pt-3 display-4">Text: Blue&lt;/div>
+&lt;h2 id="code-highlighting">Code highlighting&lt;/h2>
+&lt;p>With Hugo version 0.60 and higher, you can choose from a range of code block highlight and colour styles using &lt;a href="https://github.com/alecthomas/chroma">Chroma&lt;/a> that are applied to your fenced code blocks by default. If you copied a recent &lt;code>config.toml&lt;/code> your site uses Tango (like this site), otherwise the Hugo default is Monokai. You can switch to any of the &lt;a href="https://xyproto.github.io/splash/docs/all.html">available Chroma styles&lt;/a> (including our Docsy default Tango) using your &lt;code>config.toml&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-toml" data-lang="toml">&lt;span style="color:#000;font-weight:bold">[&lt;/span>&lt;span style="color:#000">markup&lt;/span>&lt;span style="color:#000;font-weight:bold">]&lt;/span>
+&lt;span style="color:#000;font-weight:bold">[&lt;/span>&lt;span style="color:#000">markup&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">goldmark&lt;/span>&lt;span style="color:#000;font-weight:bold">]&lt;/span>
+&lt;span style="color:#000;font-weight:bold">[&lt;/span>&lt;span style="color:#000">markup&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">goldmark&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">renderer&lt;/span>&lt;span style="color:#000;font-weight:bold">]&lt;/span>
+&lt;span style="color:#000">unsafe&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#204a87;font-weight:bold">true&lt;/span>
+&lt;span style="color:#000;font-weight:bold">[&lt;/span>&lt;span style="color:#000">markup&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">highlight&lt;/span>&lt;span style="color:#000;font-weight:bold">]&lt;/span>
+&lt;span style="color:#8f5902;font-style:italic"># See a complete list of available styles at https://xyproto.github.io/splash/docs/all.html&lt;/span>
+&lt;span style="color:#000">style&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;tango&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>By default code highlighting styles are not applied to code blocks without a specified language, instead you get Docsy&amp;rsquo;s default style of grey with black text. If you would like the code highlighting style to apply to all code blocks, even without a language, uncomment or add the following line under &lt;code>[markup.highlight]&lt;/code> in your &lt;code>config.toml&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-toml" data-lang="toml"> &lt;span style="color:#8f5902;font-style:italic"># Uncomment if you want your chosen highlight style used for code blocks without a specified language&lt;/span>
+&lt;span style="color:#000">guessSyntax&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;true&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>You can find out more about code highlighting in Hugo with Chroma in &lt;a href="https://gohugo.io/content-management/syntax-highlighting/">Syntax Highlighting&lt;/a>.&lt;/p>
+&lt;h2 id="customizing-templates">Customizing templates&lt;/h2>
+&lt;h3 id="add-code-to-head-or-before-body-end">Add code to head or before body end&lt;/h3>
+&lt;p>If you need to add some code (CSS import or similar) to the &lt;code>head&lt;/code> section on every page, add a partial to your project:&lt;/p>
+&lt;pre>&lt;code>layouts/partials/hooks/head-end.html
+&lt;/code>&lt;/pre>&lt;p>And add the code you need in that file. Your partial code is automatically included at the end of the theme partial &lt;a href="https://github.com/google/docsy/blob/master/layouts/partials/head.html">head.html&lt;/a> (the &lt;a href="https://github.com/google/docsy/blob/master/layouts/partials/head.html">theme version&lt;/a> of &lt;code>head-end.html&lt;/code> is empty):&lt;/p>
+&lt;p>Similar, if you want to add some code right before the &lt;code>body&lt;/code> end, create your own version of the following file:&lt;/p>
+&lt;pre>&lt;code>layouts/partials/hooks/body-end.html
+&lt;/code>&lt;/pre>&lt;p>Any code in this file is included automatically at the end of the theme partial &lt;a href="https://github.com/google/docsy/blob/master/layouts/partials/head.html">&lt;code>scripts.html&lt;/code>&lt;/a>.&lt;/p>
+&lt;p>Both &lt;code>head.html&lt;/code> and &lt;code>scripts.html&lt;/code> are then used to build Docsy&amp;rsquo;s &lt;a href="https://github.com/google/docsy/blob/master/layouts/_default/baseof.html">base page layout&lt;/a>, which is used by all the other page templates:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&lt;span style="color:#8f5902;font-style:italic">&amp;lt;!doctype html&amp;gt;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">html&lt;/span> &lt;span style="color:#c4a000">lang&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;{{ .Site.Language.Lang }}&amp;#34;&lt;/span> &lt;span style="color:#c4a000">class&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;no-js&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">head&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+{{ partial &amp;#34;head.html&amp;#34; . }}
+&lt;span style="color:#000;font-weight:bold">&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">head&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">body&lt;/span> &lt;span style="color:#c4a000">class&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;td-{{ .Kind }}&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">header&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+{{ partial &amp;#34;navbar.html&amp;#34; . }}
+&lt;span style="color:#000;font-weight:bold">&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">header&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">div&lt;/span> &lt;span style="color:#c4a000">class&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;container-fluid td-default td-outer&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">main&lt;/span> &lt;span style="color:#c4a000">role&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;main&amp;#34;&lt;/span> &lt;span style="color:#c4a000">class&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;td-main&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+{{ block &amp;#34;main&amp;#34; . }}{{ end }}
+&lt;span style="color:#000;font-weight:bold">&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">main&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+{{ partial &amp;#34;footer.html&amp;#34; . }}
+&lt;span style="color:#000;font-weight:bold">&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">div&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+{{ partialCached &amp;#34;scripts.html&amp;#34; . }}
+&lt;span style="color:#000;font-weight:bold">&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">body&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">html&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Navigation and Search</title><link>/docs/adding-content/navigation/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>/docs/adding-content/navigation/</guid><description>
+&lt;h2 id="top-level-menu">Top-level menu&lt;/h2>
+&lt;p>The top level menu (the one that appears in the top navigation bar for the entire site) uses your site&amp;rsquo;s &lt;a href="https://gohugo.io/content-management/menus/">&lt;code>main&lt;/code> menu&lt;/a>. All Hugo sites have a &lt;code>main&lt;/code> menu array of menu entries, accessible via the &lt;code>.Site.Menus&lt;/code> site variable and populatable via page front matter or your site&amp;rsquo;s &lt;code>config.toml&lt;/code>.&lt;/p>
+&lt;p>To add a page or section to this menu, add it to the site&amp;rsquo;s &lt;code>main&lt;/code> menu in either &lt;code>config.toml&lt;/code> or in the destination page&amp;rsquo;s front matter (in &lt;code>_index.md&lt;/code> or &lt;code>_index.html&lt;/code> for a section, as that&amp;rsquo;s the section landing page). For example, here&amp;rsquo;s how we added the Documentation section landing page to the main menu in this site:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">---&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">title&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Docsy Documentation&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">linkTitle&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Documentation&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">menu&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">main&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">weight&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#0000cf;font-weight:bold">20&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>---&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The menu is ordered from left to right by page &lt;code>weight&lt;/code>. So, for example, a section index or page with &lt;code>weight: 30&lt;/code> would appear after the Documentation section in the menu, while one with &lt;code>weight: 10&lt;/code> would appear before it.&lt;/p>
+&lt;p>If you want to add a link to an external site to this menu, add it in &lt;code>config.toml&lt;/code>, specifying the &lt;code>weight&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#000;font-weight:bold">[[&lt;/span>menu.main&lt;span style="color:#000;font-weight:bold">]]&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>name&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>=&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;GitHub&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>weight&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>=&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#0000cf;font-weight:bold">50&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>url&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>=&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;https://github.com/google/docsy/&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="adding-a-version-drop-down">Adding a version drop-down&lt;/h3>
+&lt;p>If you add some &lt;code>[params.versions]&lt;/code> in &lt;code>config.toml&lt;/code>, the Docsy theme adds a
+version selector drop down to the top-level menu.&lt;/p>
+&lt;p>You can find out more in the guide to
+&lt;a href="/docs/adding-content/versioning/">versioning your docs&lt;/a>.&lt;/p>
+&lt;h3 id="adding-a-language-drop-down">Adding a language drop-down&lt;/h3>
+&lt;p>If you configure more than one language in &lt;code>config.toml&lt;/code>, the Docsy theme adds a language selector drop down to the top-level menu. Selecting a language takes the user to the translated version of the current page, or the home page for the given language.&lt;/p>
+&lt;p>You can find out more in &lt;a href="/docs/language/">Multi-language support&lt;/a>.&lt;/p>
+&lt;h2 id="section-menu">Section menu&lt;/h2>
+&lt;p>The section menu, as shown in the left side of the &lt;code>docs&lt;/code> section, is automatically built from the &lt;code>content&lt;/code> tree. Like the top-level menu, it is ordered by page or section index &lt;code>weight&lt;/code> (or by page creation &lt;code>date&lt;/code> if &lt;code>weight&lt;/code> is not set), with the page or index&amp;rsquo;s &lt;code>Title&lt;/code>, or &lt;code>linkTitle&lt;/code> if different, as its link title in the menu. If a section subfolder has pages other than &lt;code>_index.md&lt;/code> or &lt;code>_index.html&lt;/code>, those pages will appear as a submenu, again ordered by &lt;code>weight&lt;/code>. For example, here&amp;rsquo;s the metadata for this page showing its &lt;code>weight&lt;/code> and &lt;code>title&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">---&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">title&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Navigation and Search&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">linkTitle&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Navigation and Search&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">date&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">2017-01-05&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">weight&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#0000cf;font-weight:bold">3&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">description&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#8f5902;font-style:italic">&amp;gt;
+&lt;/span>&lt;span style="color:#8f5902;font-style:italic"> Customize site navigation and search for your Docsy site.&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>---&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>To hide a page or section from the menu, set &lt;code>toc_hide: true&lt;/code> in front matter.&lt;/p>
+&lt;p>By default, the section menu will show the current section fully expanded all the way down. This may make the left nav too long and difficult to scan for bigger sites. Try setting site param &lt;code>ui.sidebar_menu_compact = true&lt;/code> in &lt;code>config.toml&lt;/code>.&lt;/p>
+&lt;h2 id="breadcrumb-navigation">Breadcrumb navigation&lt;/h2>
+&lt;p>Breadcrumb navigation is enabled by default. To disable breadcrumb navigation, set site param &lt;code>ui.breadcrumb_disable = true&lt;/code> in &lt;code>config.toml&lt;/code>.&lt;/p>
+&lt;h2 id="site-search-options">Site search options&lt;/h2>
+&lt;p>Docsy offers multiple options that let your readers search your site content, so you can pick one that suits your needs. You can choose from:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="#configure-search-with-a-google-custom-search-engine">Google Custom Search Engine&lt;/a> (GCSE), the default option, which uses Google&amp;rsquo;s index of your public site to generate a search results page.&lt;/li>
+&lt;li>&lt;a href="#configure-algolia-docsearch">Algolia DocSearch&lt;/a>, which uses Algolia&amp;rsquo;s indexing and search mechanism, and provides an organized dropdown of search results when your readers use the search box. Algolia DocSearch is free for public documentation sites.&lt;/li>
+&lt;li>&lt;a href="#configure-local-search-with-lunr">Local search with Lunr&lt;/a>, which uses Javascript to index and search your site without the need to connect to external services. This option doesn&amp;rsquo;t require your site to be public.&lt;/li>
+&lt;/ul>
+&lt;p>If you enable any of these search options in your &lt;code>config.toml&lt;/code>, a search box displays in the right of your top navigation bar. By default a search box also displays at the top of the section menu in the left navigation pane, which you can disable if you prefer, or if you&amp;rsquo;re using a search option that only works with the top search box.&lt;/p>
+&lt;p>Be aware that if you accidentally enable more than one search option in your &lt;code>config.toml&lt;/code> you may get unexpected results (for example, if you have added the &lt;code>.js&lt;/code> for Algolia DocSearch, you&amp;rsquo;ll get Algolia results if you enable GCSE search but forget to disable Algolia search).&lt;/p>
+&lt;h3 id="disabling-the-sidebar-search-box">Disabling the sidebar search box&lt;/h3>
+&lt;p>By default, the search box appears in both the top navigation bar and at the top of the sidebar left navigation pane. If you don&amp;rsquo;t want the sidebar search box, set &lt;code>sidebar_search_disable&lt;/code> to &lt;code>true&lt;/code> in &lt;code>config.toml&lt;/code>:&lt;/p>
+&lt;pre>&lt;code>sidebar_search_disable = true
+&lt;/code>&lt;/pre>&lt;h2 id="configure-search-with-a-google-custom-search-engine">Configure search with a Google Custom Search Engine&lt;/h2>
+&lt;p>By default Docsy uses a &lt;a href="https://cse.google.com/cse/all">Google Custom Search Engine&lt;/a> (GCSE) to search your site. To enable this feature, you&amp;rsquo;ll first need to make sure that you have built a public production version of your site, as otherwise your site won&amp;rsquo;t be crawled and indexed.&lt;/p>
+&lt;h3 id="setting-up-site-search">Setting up site search&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>Deploy your site and ensure that it&amp;rsquo;s built with &lt;code>HUGO_ENV=&amp;quot;production&amp;quot;&lt;/code>, as Google will only crawl and index Docsy sites built with this setting (you probably don&amp;rsquo;t want your not-ready-for-prime-time site to be searchable!). You can specify this variable as a command line flag to Hugo:&lt;/p>
+&lt;pre>&lt;code>$ env HUGO_ENV=&amp;quot;production&amp;quot; hugo
+&lt;/code>&lt;/pre>&lt;p>Alternatively, if you&amp;rsquo;re using Netlify, you can specify it as a Netlify &lt;a href="https://www.netlify.com/docs/continuous-deployment/#build-environment-variables">deployment setting&lt;/a> in &lt;code>netlify.toml&lt;/code> or the Netlify UI, along with the Hugo version. It may take a day or so before your site has actual search results available.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Create a Google Custom Search Engine for your deployed site by clicking &lt;strong>New search engine&lt;/strong> on the &lt;a href="https://cse.google.com/cse/all">Custom Search page&lt;/a> and following the instructions. Make a note of the ID for your new search engine.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Add any further configuration you want to your search engine using the &lt;strong>Edit search engine&lt;/strong> options. In particular you may want to do the following:&lt;/p>
+&lt;ul>
+&lt;li>Select &lt;strong>Look and feel&lt;/strong>. Change from the default &lt;strong>Overlay&lt;/strong> layout to &lt;strong>Results only&lt;/strong>, as this option means your search results are embedded in your search page rather than appearing in a separate box. Click &lt;strong>Save&lt;/strong> to save your changes.&lt;/li>
+&lt;li>Edit the default result link behavior so that search results from your site don&amp;rsquo;t open in a new tab. To do this, select &lt;strong>Search Features&lt;/strong> - &lt;strong>Advanced&lt;/strong> - &lt;strong>Websearch Settings&lt;/strong>. In the &lt;strong>Link Target&lt;/strong> field, type &amp;ldquo;_parent&amp;rdquo;. Click &lt;strong>Save&lt;/strong> to save your changes.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Tip&lt;/h4>
+Your site search results should show up within a couple of days. If it takes longer than that, you can manually request that your site is indexed by &lt;a href="https://support.google.com/webmasters/answer/183668?hl=en">submitting a sitemap through the Google Search Console&lt;/a>.
+&lt;/div>
+&lt;h3 id="adding-the-search-page">Adding the search page&lt;/h3>
+&lt;p>Once you have your search engine set up, you can add the feature to your site:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Ensure you have a Markdown file in &lt;code>content/en/search.md&lt;/code> (and one per other languages if needed) to display your search results. It only needs a title and &lt;code>layout: search&lt;/code>, as in the following example:&lt;/p>
+&lt;pre>&lt;code>---
+title: Search Results
+layout: search
+---
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>Add your Google Custom Search Engine ID to the site params in &lt;code>config.toml&lt;/code>. You can add different values per language if needed.&lt;/p>
+&lt;pre>&lt;code># Google Custom Search Engine ID. Remove or comment out to disable search.
+gcs_engine_id = &amp;quot;011737558837375720776:fsdu1nryfng&amp;quot;
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;/ol>
+&lt;h3 id="disabling-gcse-search">Disabling GCSE search&lt;/h3>
+&lt;p>If you don&amp;rsquo;t specify a Google Custom Search Engine ID for your project and haven&amp;rsquo;t enabled any other search options, the search box won&amp;rsquo;t appear in your site. If you&amp;rsquo;re using the default &lt;code>config.toml&lt;/code> from the example site and want to disable search, just comment out or remove the relevant line.&lt;/p>
+&lt;h2 id="configure-algolia-docsearch">Configure Algolia DocSearch&lt;/h2>
+&lt;p>As an alternative to GCSE, you can use &lt;a href="https://community.algolia.com/docsearch/">Algolia DocSearch&lt;/a> with this theme. Algolia DocSearch is free for public documentation sites.&lt;/p>
+&lt;h3 id="sign-up-for-algolia-docsearch">Sign up for Algolia DocSearch&lt;/h3>
+&lt;p>Complete the form at &lt;a href="https://community.algolia.com/docsearch/#join-docsearch-program">https://community.algolia.com/docsearch/#join-docsearch-program&lt;/a>.&lt;/p>
+&lt;p>If you are accepted to the program, you will receive the JavaScript code to add to your documentation site from Algolia by email.&lt;/p>
+&lt;h3 id="adding-algolia-docsearch">Adding Algolia DocSearch&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>Enable Algolia DocSearch in &lt;code>config.toml&lt;/code>.&lt;/p>
+&lt;pre>&lt;code># Enable Algolia DocSearch
+algolia_docsearch = true
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>Remove or comment out any GCSE ID in &lt;code>config.toml&lt;/code> and ensure local search is set to &lt;code>false&lt;/code> as you can only have one type of search enabled. See &lt;a href="#disabling-gcse-search">Disabling GCSE search&lt;/a>.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Disable the sidebar search in &lt;code>config.toml&lt;/code> as this is not currently supported for Algolia DocSearch. See &lt;a href="#disabling-the-sidebar-search-box">Disabling the sidebar search box&lt;/a>.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Add the JavaScript code provided to you by Algolia to the head and body of every page on your site. See &lt;a href="/docs/adding-content/lookandfeel/#add-code-to-head-or-before-body-end">Add code to head or before body end&lt;/a> for details.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Update the &lt;code>inputSelector&lt;/code> field in the body end Javascript with the appropriate CSS selector (e.g. &lt;code>.td-search-input&lt;/code> to use the default CSS from this theme).&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>When you&amp;rsquo;ve completed these steps the Algolia search should be enabled on your site. Search results are displayed as a drop-down under the search box, so you don&amp;rsquo;t need to add any search results page.&lt;/p>
+&lt;h2 id="configure-local-search-with-lunr">Configure local search with Lunr&lt;/h2>
+&lt;p>&lt;a href="https://lunrjs.com/">Lunr&lt;/a> is a Javascript-based search option that lets you index your site and make it searchable without the need for external, server-side search services. This is a good option particularly for smaller or non-public sites.&lt;/p>
+&lt;p>To add Lunr search to your Docsy site:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Enable local search in &lt;code>config.toml&lt;/code>.&lt;/p>
+&lt;pre>&lt;code># Enable local search
+offlineSearch = true
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>Remove or comment out any GCSE ID in &lt;code>config.toml&lt;/code> and ensure Algolia DocSearch is set to &lt;code>false&lt;/code>, as you can only have one type of search enabled. See &lt;a href="#disabling-gcse-search">Disabling GCSE search&lt;/a>.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>Once you&amp;rsquo;ve completed these steps, local search is enabled for your site and results appear in a drop down when you use the search box.&lt;/p>
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Tip&lt;/h4>
+If you&amp;rsquo;re &lt;a href="/docs/deployment/#serving-your-site-locally">testing this locally&lt;/a> using Hugo’s local server functionality, you need to build your &lt;code>offline-search-index.xxx.json&lt;/code> file first by running &lt;code>hugo&lt;/code>. If you have the Hugo server running while you build &lt;code>offline-search-index.xxx.json&lt;/code>, you may need to stop the server and restart it in order to see your search results.
+&lt;/div>
+&lt;h3 id="changing-the-summary-length-of-the-local-search-results">Changing the summary length of the local search results&lt;/h3>
+&lt;p>You can customize the summary length by setting &lt;code>offlineSearchSummaryLength&lt;/code> in &lt;code>config.toml&lt;/code>.&lt;/p>
+&lt;pre>&lt;code>#Enable offline search with Lunr.js
+offlineSearch = true
+offlineSearchSummaryLength = 200
+&lt;/code>&lt;/pre>&lt;h3 id="changing-the-maximum-result-count-of-the-local-search">Changing the maximum result count of the local search&lt;/h3>
+&lt;p>You can customize the maximum result count by setting &lt;code>offlineSearchMaxResults&lt;/code> in &lt;code>config.toml&lt;/code>.&lt;/p>
+&lt;pre>&lt;code>#Enable offline search with Lunr.js
+offlineSearch = true
+offlineSearchMaxResults = 25
+&lt;/code>&lt;/pre>&lt;h3 id="changing-the-width-of-the-local-search-results-popover">Changing the width of the local search results popover&lt;/h3>
+&lt;p>The width of the search results popover will automatically widen according to the content.&lt;/p>
+&lt;p>If you want to limit the width, add the following scss into &lt;code>assets/scss/_variables_project.scss&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-scss" data-lang="scss">&lt;span style="color:#204a87;font-weight:bold">body&lt;/span> &lt;span style="color:#000;font-weight:bold">{&lt;/span>
+&lt;span style="color:#000">.popover.offline-search-result&lt;/span> &lt;span style="color:#000;font-weight:bold">{&lt;/span>
+&lt;span style="color:#204a87;font-weight:bold">max-width&lt;/span>&lt;span style="color:#5c35cc;font-weight:bold">:&lt;/span> &lt;span style="color:#204a87;font-weight:bold">460px&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">}&lt;/span>
+&lt;span style="color:#000;font-weight:bold">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="excluding-pages-from-local-search-results">Excluding pages from local search results&lt;/h3>
+&lt;p>To exclude pages from local search results, add &lt;code>exclude_search: true&lt;/code> to the the frontmatter of each page:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">---&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">title&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Index&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">weight&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#0000cf;font-weight:bold">10&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">exclude_search&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">true&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>---&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Doc Versioning</title><link>/docs/adding-content/versioning/</link><pubDate>Sun, 02 Feb 2020 00:00:00 +0000</pubDate><guid>/docs/adding-content/versioning/</guid><description>
+&lt;p>Depending on your project&amp;rsquo;s releases and versioning, you may want to let your
+users access previous versions of your documentation. How you deploy the
+previous versions is up to you. This page describes the Docsy features that you
+can use to provide navigation between the various versions of your docs and
+to display an information banner on the archived sites.&lt;/p>
+&lt;h2 id="adding-a-version-drop-down-menu">Adding a version drop-down menu&lt;/h2>
+&lt;p>If you add some &lt;code>[params.versions]&lt;/code> in &lt;code>config.toml&lt;/code>, the Docsy theme adds a
+version selector drop down to the top-level menu. You specify a URL and a name
+for each version you would like to add to the menu, as in the following example:&lt;/p>
+&lt;pre>&lt;code># Add your release versions here
+[[params.versions]]
+version = &amp;quot;master&amp;quot;
+url = &amp;quot;https://master.kubeflow.org&amp;quot;
+[[params.versions]]
+version = &amp;quot;v0.2&amp;quot;
+url = &amp;quot;https://v0-2.kubeflow.org&amp;quot;
+[[params.versions]]
+version = &amp;quot;v0.3&amp;quot;
+url = &amp;quot;https://v0-3.kubeflow.org&amp;quot;
+&lt;/code>&lt;/pre>&lt;p>Remember to add your current version so that users can navigate back!&lt;/p>
+&lt;p>The default title for the version drop-down menu is &lt;strong>Releases&lt;/strong>. To change the
+title, change the &lt;code>version_menu&lt;/code> parameter in &lt;code>config.toml&lt;/code>:&lt;/p>
+&lt;pre>&lt;code>version_menu = &amp;quot;Releases&amp;quot;
+&lt;/code>&lt;/pre>&lt;p>You can read more about Docsy menus in the guide to
+&lt;a href="/docs/adding-content/navigation/">navigation and search&lt;/a>.&lt;/p>
+&lt;h2 id="displaying-a-banner-on-archived-doc-sites">Displaying a banner on archived doc sites&lt;/h2>
+&lt;p>If you create archived snapshots for older versions of your docs, you can add a
+note at the top of every page in the archived docs to let readers know that
+they’re seeing an unmaintained snapshot and give them a link to the latest
+version.&lt;/p>
+&lt;p>For example, see the archived docs for
+&lt;a href="https://v0-6.kubeflow.org/docs/">Kubeflow v0.6&lt;/a>:&lt;/p>
+&lt;figure>
+&lt;img src="/images/version-banner.png"
+alt="A text box explaining that this is an unmaintained snapshot of the docs."
+class="mt-3 mb-3 border border-info rounded" />
+&lt;figcaption>Figure 1. The banner on the archived docs for Kubeflow v0.6
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>To add the banner to your doc site, make the following changes in your
+&lt;code>config.toml&lt;/code> file:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Set the &lt;code>archived_version&lt;/code> parameter to &lt;code>true&lt;/code>:&lt;/p>
+&lt;pre>&lt;code>archived_version = true
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>Set the &lt;code>version&lt;/code> parameter to the version of the archived doc set. For
+example, if the archived docs are for version 0.1:&lt;/p>
+&lt;pre>&lt;code>version = &amp;quot;0.1&amp;quot;
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>Make sure that &lt;code>url_latest_version&lt;/code> contains the URL of the website that you
+want to point readers to. In most cases, this should be the URL of the latest
+version of your docs:&lt;/p>
+&lt;pre>&lt;code>url_latest_version = &amp;quot;https://your-latest-doc-site.com&amp;quot;
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;/ol></description></item><item><title>Docs: Docsy Shortcodes</title><link>/docs/adding-content/shortcodes/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>/docs/adding-content/shortcodes/</guid><description>
+&lt;p>Rather than writing all your site pages from scratch, Hugo lets you define and use &lt;a href="https://gohugo.io/content-management/shortcodes/">shortcodes&lt;/a>. These are reusable snippets of content that you can include in your pages, often using HTML to create effects that are difficult or impossible to do in simple Markdown. Shortcodes can also have parameters that let you, for example, add your own text to a fancy shortcode text box. As well as Hugo&amp;rsquo;s &lt;a href="https://gohugo.io/content-management/shortcodes/">built-in shortcodes&lt;/a>, Docsy provides some shortcodes of its own to help you build your pages.&lt;/p>
+&lt;h2 id="shortcode-blocks">Shortcode blocks&lt;/h2>
+&lt;p>The theme comes with a set of custom &lt;strong>Page Block&lt;/strong> shortcodes that can be used to compose landing pages, about pages, and similar.&lt;/p>
+&lt;p>These blocks share some common parameters:&lt;/p>
+&lt;dl>
+&lt;dt>height&lt;/dt>
+&lt;dd>A pre-defined height of the block container. One of &lt;code>min&lt;/code>, &lt;code>med&lt;/code>, &lt;code>max&lt;/code>, &lt;code>full&lt;/code>, or &lt;code>auto&lt;/code>. Setting it to &lt;code>full&lt;/code> will fill the Viewport Height, which can be useful for landing pages.&lt;/dd>
+&lt;dt>color&lt;/dt>
+&lt;dd>The block will be assigned a color from the theme palette if not provided, but you can set your own if needed. You can use all of Bootstrap&amp;rsquo;s color names, theme color names or a grayscale shade. Some examples would be &lt;code>primary&lt;/code>, &lt;code>white&lt;/code>, &lt;code>dark&lt;/code>, &lt;code>warning&lt;/code>, &lt;code>light&lt;/code>, &lt;code>success&lt;/code>, &lt;code>300&lt;/code>, &lt;code>blue&lt;/code>, &lt;code>orange&lt;/code>. This will become the &lt;strong>background color&lt;/strong> of the block, but text colors will adapt to get proper contrast.&lt;/dd>
+&lt;/dl>
+&lt;h3 id="blockscover">blocks/cover&lt;/h3>
+&lt;p>The &lt;strong>blocks/cover&lt;/strong> shortcode creates a landing page type of block that fills the top of the page.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">{{&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#c4a000">cover&lt;/span> &lt;span style="color:#c4a000">title&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Welcome!&amp;#34;&lt;/span> &lt;span style="color:#c4a000">image_anchor&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;center&amp;#34;&lt;/span> &lt;span style="color:#c4a000">height&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;full&amp;#34;&lt;/span> &lt;span style="color:#c4a000">color&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;primary&amp;#34;&lt;/span> &lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>}}
+&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">div&lt;/span> &lt;span style="color:#c4a000">class&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;mx-auto&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">a&lt;/span> &lt;span style="color:#c4a000">class&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;btn btn-lg btn-primary mr-3 mb-4&amp;#34;&lt;/span> &lt;span style="color:#c4a000">href&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;{{&amp;lt; relref &amp;#34;&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#c4a000">docs&lt;/span>&lt;span style="color:#a40000">&amp;#34;&lt;/span> &lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>}}&amp;#34;&amp;gt;
+Learn More &lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">i&lt;/span> &lt;span style="color:#c4a000">class&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;fas fa-arrow-alt-circle-right ml-2&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">i&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">a&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">a&lt;/span> &lt;span style="color:#c4a000">class&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;btn btn-lg btn-secondary mr-3 mb-4&amp;#34;&lt;/span> &lt;span style="color:#c4a000">href&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;https://example.org&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+Download &lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">i&lt;/span> &lt;span style="color:#c4a000">class&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;fab fa-github ml-2 &amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">i&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">a&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">p&lt;/span> &lt;span style="color:#c4a000">class&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;lead mt-5&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>This program is now available in &lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">a&lt;/span> &lt;span style="color:#c4a000">href&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;#&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>AppStore!&lt;span style="color:#000;font-weight:bold">&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">a&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">p&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">div&lt;/span> &lt;span style="color:#c4a000">class&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;mx-auto mt-5&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+{{&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#c4a000">link-down&lt;/span> &lt;span style="color:#c4a000">color&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;info&amp;#34;&lt;/span> &lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>}}
+&lt;span style="color:#000;font-weight:bold">&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">div&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;span style="color:#000;font-weight:bold">&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">div&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+{{&lt;span style="color:#a40000">&amp;lt;&lt;/span> /blocks/cover &amp;gt;}}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Note that the relevant shortcode parameters above will have sensible defaults, but is included here for completeness.&lt;/p>
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Hugo Tip&lt;/h4>
+&lt;blockquote>
+&lt;p>Using the bracket styled shortcode delimiter, &lt;code>&amp;gt;}}&lt;/code>, tells Hugo that the inner content is HTML/plain text and needs no further processing. Changing the delimiter to &lt;code>%}}&lt;/code> means Hugo will treat the content as Markdown. You can use both styles in your pages.&lt;/p>
+&lt;/blockquote>
+&lt;/div>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Parameter&lt;/th>
+&lt;th>Default&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>title&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>The main display title for the block.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>image_anchor&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>height&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>See above.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>color&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>See above.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>byline&lt;/td>
+&lt;td>Byline text on featured image.&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>To set the background image, place an image with the word &amp;ldquo;background&amp;rdquo; in the name in the page&amp;rsquo;s &lt;a href="/docs/adding-content/content/#page-bundles">Page Bundle&lt;/a>. For example, in our the example site the background image in the home page&amp;rsquo;s cover block is &lt;a href="https://github.com/google/docsy-example/tree/master/content/en">&lt;code>featured-background.jpg&lt;/code>&lt;/a>, in the same directory.&lt;/p>
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Tip&lt;/h4>
+If you also include the word &lt;strong>featured&lt;/strong> in the image name, e.g. &lt;code>my-featured-background.jpg&lt;/code>, it will also be used as the Twitter Card image when shared.
+&lt;/div>
+&lt;p>For available icons, see &lt;a href="https://fontawesome.com/icons?d=gallery&amp;amp;m=free">Font Awesome&lt;/a>.&lt;/p>
+&lt;h3 id="blockslead">blocks/lead&lt;/h3>
+&lt;p>The &lt;strong>blocks/lead&lt;/strong> block shortcode is a simple lead/title block with centred text and an arrow down pointing to the next section.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go-html-template" data-lang="go-html-template">&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">lead&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">color&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;dark&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+TechOS is the OS of the future.
+Runs on **bare metal** in the **cloud**!
+&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">lead&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Parameter&lt;/th>
+&lt;th>Default&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>height&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>See above.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>color&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>See above.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="blockssection">blocks/section&lt;/h3>
+&lt;p>The &lt;strong>blocks/section&lt;/strong> shortcode is meant as a general-purpose content container. It comes in two &amp;ldquo;flavors&amp;rdquo;, one for general content and one with styling more suitable for wrapping a horizontal row of feature sections.&lt;/p>
+&lt;p>The example below shows a section wrapping 3 feature sections.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go-html-template" data-lang="go-html-template">&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">&amp;lt;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">section&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">color&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;dark&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">&amp;gt;&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">feature&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">icon&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;fa-lightbulb&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">title&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Fastest OS **on the planet**!&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+The new **TechOS** operating system is an open source project. It is a new project, but with grand ambitions.
+Please follow this space for updates!
+&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">feature&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">feature&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">icon&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;fab fa-github&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">title&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Contributions welcome!&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">url&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;https://github.com/gohugoio/hugo&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+We do a [Pull Request](https://github.com/gohugoio/hugo/pulls) contributions workflow on **GitHub**. New users are always welcome!
+&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">feature&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">feature&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">icon&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;fab fa-twitter&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">title&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Follow us on Twitter!&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">url&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;https://twitter.com/GoHugoIO&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+For announcement of latest features etc.
+&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">feature&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">&amp;lt;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">section&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">&amp;gt;&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Parameter&lt;/th>
+&lt;th>Default&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>height&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>See above.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>color&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>See above.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>type&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>Specify &amp;ldquo;section&amp;rdquo; if you want a general container, omit this parameter if you want this section to contain a horizontal row of features.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="blocksfeature">blocks/feature&lt;/h3>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go-html-template" data-lang="go-html-template">
+&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">feature&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">icon&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;fab fa-github&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">title&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Contributions welcome!&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">url&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;https://github.com/gohugoio/hugo&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+We do a [Pull Request](https://github.com/gohugoio/hugo/pulls) contributions workflow on **GitHub**. New users are always welcome!
+&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">feature&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Parameter&lt;/th>
+&lt;th>Default&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>title&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>The title to use.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>url&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>The URL to link to.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>icon&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>The icon class to use.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="blockslink-down">blocks/link-down&lt;/h3>
+&lt;p>The &lt;strong>blocks/link-down&lt;/strong> shortcode creates a navigation link down to the next section. It&amp;rsquo;s meant to be used in combination with the other blocks shortcodes.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go-html-template" data-lang="go-html-template">
+&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">div&lt;/span> &lt;span style="color:#c4a000">class&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;mx-auto mt-5&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">&amp;lt;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">link&lt;/span>&lt;span style="color:#a40000">-&lt;/span>&lt;span style="color:#000">down&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">color&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;info&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">&amp;gt;&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+&lt;span style="color:#000;font-weight:bold">&amp;lt;/&lt;/span>&lt;span style="color:#204a87;font-weight:bold">div&lt;/span>&lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Parameter&lt;/th>
+&lt;th>Default&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>color&lt;/td>
+&lt;td>info&lt;/td>
+&lt;td>See above.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="shortcode-helpers">Shortcode helpers&lt;/h2>
+&lt;h3 id="alert">alert&lt;/h3>
+&lt;p>The &lt;strong>alert&lt;/strong> shortcode creates an alert block that can be used to display notices or warnings.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go-html-template" data-lang="go-html-template">&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">alert&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">title&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Warning&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">color&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;warning&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+This is a warning.
+&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">alert&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Renders to:&lt;/p>
+&lt;div class="alert alert-warning" role="alert">
+&lt;h4 class="alert-heading">Warning&lt;/h4>
+This is a warning.
+&lt;/div>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Parameter&lt;/th>
+&lt;th>Default&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>color&lt;/td>
+&lt;td>primary&lt;/td>
+&lt;td>One of the theme colors, eg &lt;code>primary&lt;/code>, &lt;code>info&lt;/code>, &lt;code>warning&lt;/code> etc.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="pageinfo">pageinfo&lt;/h3>
+&lt;p>The &lt;strong>pageinfo&lt;/strong> shortcode creates a text box that you can use to add banner information for a page: for example, letting users know that the page contains placeholder content, that the content is deprecated, or that it documents a beta feature.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go-html-template" data-lang="go-html-template">&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">pageinfo&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">color&lt;/span>&lt;span style="color:#a40000">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;primary&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+This is placeholder content.
+&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">pageinfo&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">%&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Renders to:&lt;/p>
+&lt;div class="pageinfo pageinfo-primary">
+&lt;p>This is placeholder content&lt;/p>
+&lt;/div>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Parameter&lt;/th>
+&lt;th>Default&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>color&lt;/td>
+&lt;td>primary&lt;/td>
+&lt;td>One of the theme colors, eg &lt;code>primary&lt;/code>, &lt;code>info&lt;/code>, &lt;code>warning&lt;/code> etc.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="imgproc">imgproc&lt;/h3>
+&lt;p>The &lt;strong>imgproc&lt;/strong> shortcode finds an image in the current &lt;a href="/docs/adding-content/content/#page-bundles">Page Bundle&lt;/a> and scales it given a set of processing instructions.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-go-html-template" data-lang="go-html-template">&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">&amp;lt;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">imgproc&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">spruce&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">Fill&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;400x450&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">&amp;gt;&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+Norway Spruce Picea abies shoot with foliage buds.
+&lt;span style="color:#8f5902;font-style:italic">{{&lt;/span>&lt;span style="color:#a40000">&amp;lt;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#000">imgproc&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#a40000">&amp;gt;&lt;/span>&lt;span style="color:#8f5902;font-style:italic">}}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>
+&lt;div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 410px">
+&lt;img class="card-img-top" src="/docs/adding-content/shortcodes/spruce_hu0fa7d855ef6295d2886abf8df96c5044_124081_400x450_fill_q75_catmullrom_smart1.jpg" width="400" height="450">
+&lt;div class="card-body px-0 pt-2 pb-0">
+&lt;p class="card-text">
+Norway Spruce Picea abies shoot with foliage buds.
+&lt;small class="text-muted">&lt;br/>Photo: Bjørn Erik Pedersen / CC-BY-SA&lt;/small>&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;p>The example above has also a byline with photo attribution added. When using illustrations with a free license from &lt;a href="https://commons.wikimedia.org/">WikiMedia&lt;/a> and simlilar, you will in most situations need a way to attribute the author or licensor. You can add metadata to your page resources in the page front matter. The &lt;code>byline&lt;/code> param is used by convention in this theme:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#204a87;font-weight:bold">resources&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>- &lt;span style="color:#204a87;font-weight:bold">src&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;**spruce*.jpg&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">params&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">byline&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Photo: Bjørn Erik Pedersen / CC-BY-SA&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th align="right">Parameter&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td align="right">1&lt;/td>
+&lt;td>The image filename or enough of it to identify it (we do Glob matching)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="right">2&lt;/td>
+&lt;td>Command. One of &lt;code>Fit&lt;/code>, &lt;code>Resize&lt;/code> or &lt;code>Fill&lt;/code>. See &lt;a href="https://gohugo.io/content-management/image-processing/#image-processing-methods">Image Processing Methods&lt;/a>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="right">3&lt;/td>
+&lt;td>Processing options, e.g. &lt;code>400x450&lt;/code>. See &lt;a href="https://gohugo.io/content-management/image-processing/#image-processing-methods">Image Processing Options&lt;/a>.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="swaggerui">swaggerui&lt;/h3>
+&lt;p>The &lt;code>swaggerui&lt;/code> shortcode can be placed anywhere inside a page with the &lt;a href="https://github.com/google/docsy/tree/master/layouts/swagger">&lt;code>swagger&lt;/code> layout&lt;/a>; it renders &lt;a href="https://swagger.io/tools/swagger-ui/">Swagger UI&lt;/a> using any OpenAPI YAML or JSON file as source. This can be hosted anywhere you like, for example in your site&amp;rsquo;s root &lt;a href="/docs/adding-content/content/#adding-static-content">&lt;code>/static&lt;/code> folder&lt;/a>.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">---&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">title&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Pet Store API&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">type&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>swagger&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">weight&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">description&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>Reference&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>for&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>the&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>Pet&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>Store&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>API&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>---&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>{{&amp;lt;&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>swaggerui&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>src=&lt;span style="color:#4e9a06">&amp;#34;/openapi/petstore.yaml&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&amp;gt;}}&lt;span style="color:#f8f8f8;text-decoration:underline">
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>You can customize Swagger UI&amp;rsquo;s look and feel by overriding Swagger&amp;rsquo;s CSS or by editing and compiling a &lt;a href="https://github.com/swagger-api/swagger-ui">Swagger UI dist&lt;/a> yourself and replace &lt;code>themes/docsy/static/css/swagger-ui.css&lt;/code>.&lt;/p></description></item><item><title>Docs: Logos and Images</title><link>/docs/adding-content/iconsimages/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>/docs/adding-content/iconsimages/</guid><description>
+&lt;h2 id="add-your-logo">Add your logo&lt;/h2>
+&lt;p>Add your project logo as &lt;code>assets/icons/logo.svg&lt;/code> in your project. This overrides the default Docsy logo in the theme. If you don&amp;rsquo;t want a project logo, set &lt;code>navbar_logo&lt;/code> to &lt;code>false&lt;/code> (or delete the variable) in your &lt;code>config.toml&lt;/code>:&lt;/p>
+&lt;pre>&lt;code>navbar_logo = false
+&lt;/code>&lt;/pre>&lt;p>If you decide at a later stage that you&amp;rsquo;d like to add a logo to your navbar, you can set the parameter to &lt;code>true&lt;/code>:&lt;/p>
+&lt;pre>&lt;code>navbar_logo = true
+&lt;/code>&lt;/pre>
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Tip&lt;/h4>
+&lt;p>Your logo is included in the default Docsy navbar as an inline SVG with the following CSS styling (from &lt;a href="https://github.com/google/docsy/blob/master/assets/scss/_nav.scss">&lt;code>_nav.scss&lt;/code>&lt;/a>):&lt;/p>
+&lt;pre>&lt;code>svg {
+display: inline-block;
+margin: 0 10px;
+height: 30px;
+}
+&lt;/code>&lt;/pre>&lt;p>To ensure your logo displays correctly, you may want to resize it, ensure it doesn&amp;rsquo;t have height and width attributes so that its size is fully responsive, or override the default styling with your own CSS.&lt;/p>
+&lt;/div>
+&lt;h2 id="add-your-favicons">Add your favicons&lt;/h2>
+&lt;p>The easiest way to do this is to create a set of favicons via &lt;a href="http://cthedot.de/icongen">http://cthedot.de/icongen&lt;/a> (which lets you create a huge range of icon sizes and options from a single image) and/or &lt;a href="https://favicon.io/,">https://favicon.io/,&lt;/a> and put them in your site project&amp;rsquo;s &lt;code>static/favicons&lt;/code> directory. This will override the default favicons from the theme.&lt;/p>
+&lt;p>Note that &lt;a href="https://favicon.io/">https://favicon.io/&lt;/a> doesn&amp;rsquo;t create as wide a range of sizes as Icongen but &lt;em>does&lt;/em> let you quickly create favicons from text: if you want to create text favicons you can use this site to generate them, then use Icongen to create more sizes (if necessary) from your generated &lt;code>.png&lt;/code> file.&lt;/p>
+&lt;p>If you have special favicon requirements, you can create your own &lt;code>layouts/partials/favicons.html&lt;/code> with your links.&lt;/p>
+&lt;h2 id="add-images">Add images&lt;/h2>
+&lt;h3 id="landing-pages">Landing pages&lt;/h3>
+&lt;p>Docsy&amp;rsquo;s &lt;a href="/docs/adding-content/shortcodes/#blocks-cover">&lt;code>blocks/cover&lt;/code> shortcode&lt;/a> make it easy to add large cover images to your landing pages. The shortcode looks for an image with the word &amp;ldquo;background&amp;rdquo; in the name inside the landing page&amp;rsquo;s &lt;a href="https://gohugo.io/content-management/page-bundles/">Page Bundle&lt;/a> - so, for example, if you&amp;rsquo;ve copied the example site, the landing page image in &lt;code>content/en/_index.html&lt;/code> is &lt;code>content/en/featured-background.jpg&lt;/code>.&lt;/p>
+&lt;p>You specify the preferred display height of a cover block container (and hence its image) using the block&amp;rsquo;s &lt;code>height&lt;/code> parameter. For a full viewport height, use &lt;code>full&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">{{&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#c4a000">cover&lt;/span> &lt;span style="color:#c4a000">title&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;Welcome to the Docsy Example Project!&amp;#34;&lt;/span> &lt;span style="color:#c4a000">image_anchor&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;top&amp;#34;&lt;/span> &lt;span style="color:#c4a000">height&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;full&amp;#34;&lt;/span> &lt;span style="color:#c4a000">color&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;orange&amp;#34;&lt;/span> &lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>}}
+...
+{{&lt;span style="color:#a40000">&amp;lt;&lt;/span> /blocks/cover &amp;gt;}}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>For a shorter image, as in the example site&amp;rsquo;s About page, use one of &lt;code>min&lt;/code>, &lt;code>med&lt;/code>, &lt;code>max&lt;/code> or &lt;code>auto&lt;/code> (the actual height of the image):&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">{{&lt;span style="color:#000;font-weight:bold">&amp;lt;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">blocks&lt;/span>&lt;span style="color:#a40000">/&lt;/span>&lt;span style="color:#c4a000">cover&lt;/span> &lt;span style="color:#c4a000">title&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;About the Docsy Example&amp;#34;&lt;/span> &lt;span style="color:#c4a000">image_anchor&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;bottom&amp;#34;&lt;/span> &lt;span style="color:#c4a000">height&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#4e9a06">&amp;#34;min&amp;#34;&lt;/span> &lt;span style="color:#000;font-weight:bold">&amp;gt;&lt;/span>}}
+...
+{{&lt;span style="color:#a40000">&amp;lt;&lt;/span> /blocks/cover &amp;gt;}}
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="other-pages">Other pages&lt;/h3>
+&lt;p>To add inline images to other pages, use the &lt;a href="/docs/adding-content/shortcodes/#imgproc">&lt;code>imgproc&lt;/code> shortcode&lt;/a>. Alternatively, if you prefer, just use regular Markdown or HTML images and add your image files to your project&amp;rsquo;s &lt;code>static&lt;/code> directory. You can find out more about using this directory in &lt;a href="/docs/adding-content/content/#adding-static-content">Adding static content&lt;/a>.&lt;/p>
+&lt;h2 id="images-used-on-this-site">Images used on this site&lt;/h2>
+&lt;p>Images used as background images in this site are in the &lt;a href="https://commons.wikimedia.org/wiki/User:Bep/gallery#Wed_Aug_01_16:16:51_CEST_2018">public domain&lt;/a> and can be used freely. The porridge image in the example site is by &lt;a href="https://pixabay.com/users/iha31-560629/?utm_source=link-attribution&amp;amp;utm_medium=referral&amp;amp;utm_campaign=image&amp;amp;utm_content=531209">iha31&lt;/a> from &lt;a href="https://pixabay.com/?utm_source=link-attribution&amp;amp;utm_medium=referral&amp;amp;utm_campaign=image&amp;amp;utm_content=531209">Pixabay&lt;/a>&lt;/p></description></item><item><title>Docs: Analytics and User Feedback</title><link>/docs/adding-content/feedback/</link><pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate><guid>/docs/adding-content/feedback/</guid><description>
+&lt;h2 id="adding-analytics">Adding Analytics&lt;/h2>
+&lt;p>The Docsy theme contains built-in support for &lt;a href="https://analytics.google.com/analytics/web/">Google Analytics&lt;/a> via Hugo&amp;rsquo;s &lt;a href="https://gohugo.io/templates/internal/#google-analytics">internal template&lt;/a>, which is included in the theme. Once you set Analytics up as described below, usage information for your site (such as page views) is sent to your Google Analytics account.&lt;/p>
+&lt;h3 id="setup">Setup&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>Ensure you have &lt;a href="https://support.google.com/analytics/answer/1042508">set up a Google Analytics property&lt;/a> for your site: this gives you an Analytics ID to add to your config, which Docsy in turn adds to all your site&amp;rsquo;s pages.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Open &lt;code>config.toml&lt;/code>.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Enable Google Analytics by setting the Tracking ID property to your site&amp;rsquo;s Analytics ID.&lt;/p>
+&lt;pre>&lt;code> [services.googleAnalytics]
+id = &amp;quot;UA-00000000-0&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;li>
+&lt;p>Save and close &lt;code>config.toml&lt;/code>.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Ensure that your site is built with &lt;code>HUGO_ENV=&amp;quot;production&amp;quot;&lt;/code>, as Docsy only adds Analytics tracking to production-ready sites. You can specify this variable as a command line flag to Hugo:&lt;/p>
+&lt;pre>&lt;code>$ env HUGO_ENV=&amp;quot;production&amp;quot; hugo
+&lt;/code>&lt;/pre>&lt;p>Alternatively, if you&amp;rsquo;re using Netlify, you can specify it as a Netlify &lt;a href="https://www.netlify.com/docs/continuous-deployment/#build-environment-variables">deployment setting&lt;/a> in &lt;code>netlify.toml&lt;/code> or the Netlify UI, along with the Hugo version.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="user-feedback">User Feedback&lt;/h2>
+&lt;p>By default Docsy puts a &amp;ldquo;was this page helpful?&amp;rdquo; feedback widget at the bottom of every
+documentation page, as shown in Figure 1.&lt;/p>
+&lt;figure>
+&lt;img src="/images/feedback.png"
+alt="The user is presented with the text 'Was this page helpful?' followed
+by 'Yes' and 'No' buttons."/>
+&lt;figcaption>Figure 1. The feedback widget, outlined in red&lt;/figcaption>
+&lt;/figure>
+&lt;p>After clicking &lt;strong>Yes&lt;/strong> the user should see a response like Figure 2. You can configure the
+response text in &lt;code>config.toml&lt;/code>.&lt;/p>
+&lt;figure>
+&lt;img src="/images/yes.png"
+alt="After clicking 'Yes' the widget responds with 'Glad to hear it!
+Please tell us how we can improve.' and the second sentence is a link which,
+when clicked, opens GitHub and lets the user create an issue on the
+documentation repository."/>
+&lt;figcaption>
+Figure 2. An example &lt;b>Yes&lt;/b> response
+&lt;/figcaption>
+&lt;/figure>
+&lt;h3 id="how-is-this-data-useful">How is this data useful?&lt;/h3>
+&lt;p>When you have a lot of documentation, and not enough time to update it all, you can use the
+&amp;ldquo;was this page helpful?&amp;rdquo; feedback data to help you decide which pages to prioritize. In general,
+start with the pages with a lot of pageviews and low ratings. &amp;ldquo;Low ratings&amp;rdquo; in this context
+means the pages where users are clicking &lt;strong>No&lt;/strong> &amp;mdash; the page wasn&amp;rsquo;t helpful &amp;mdash; more often than
+&lt;strong>Yes&lt;/strong> &amp;mdash; the page was helpful. You can also study your highly-rated pages to develop hypotheses
+around why your users find them helpful.&lt;/p>
+&lt;p>In general, you can develop more certainty around what patterns your users find helpful or
+unhelpful if you introduce isolated changes in your documentation whenever possible. For example,
+suppose that you find a tutorial that no longer matches the product. You update the instructions,
+check back in a month, and the score has improved. You now have a correlation between up-to-date
+instructions and higher ratings. Or, suppose you study your highly-rated pages and discover that
+they all start with code samples. You find 10 other pages with their code samples at the bottom,
+move the samples to the top, and discover that each page&amp;rsquo;s score has improved. Since
+this was the only change you introduced on each page, it&amp;rsquo;s more reasonable to believe that
+your users find code samples at the top of pages helpful. The scientific method, applied to
+technical writing, in other words!&lt;/p>
+&lt;h3 id="setup-1">Setup&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>Open &lt;code>config.toml&lt;/code>.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Ensure that Google Analytics is enabled, as described &lt;a href="#setup">above&lt;/a>.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Set the response text that users see after clicking &lt;strong>Yes&lt;/strong> or &lt;strong>No&lt;/strong>.&lt;/p>
+&lt;pre>&lt;code> [params.ui.feedback]
+enable = true
+yes = 'Glad to hear it! Please &amp;lt;a href=&amp;quot;https://github.com/USERNAME/REPOSITORY/issues/new&amp;quot;&amp;gt;tell us how we can improve&amp;lt;/a&amp;gt;.'
+no = 'Sorry to hear that. Please &amp;lt;a href=&amp;quot;https://github.com/USERNAME/REPOSITORY/issues/new&amp;quot;&amp;gt;tell us how we can improve&amp;lt;/a&amp;gt;.'
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;li>
+&lt;p>Save and close &lt;code>config.toml&lt;/code>.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="access-the-feedback-data">Access the feedback data&lt;/h3>
+&lt;p>This section assumes basic familiarity with Google Analytics. For example, you should know how
+to check pageviews over a certain time range and navigate between accounts if you have access to
+multiple documentation sites.&lt;/p>
+&lt;ol>
+&lt;li>Open Google Analytics.&lt;/li>
+&lt;li>Open &lt;strong>Behavior&lt;/strong> &amp;gt; &lt;strong>Events&lt;/strong> &amp;gt; &lt;strong>Overview&lt;/strong>.&lt;/li>
+&lt;li>In the &lt;strong>Event Category&lt;/strong> table click the &lt;strong>Helpful&lt;/strong> row. Click &lt;strong>view full report&lt;/strong> if
+you don&amp;rsquo;t see the &lt;strong>Helpful&lt;/strong> row.&lt;/li>
+&lt;li>Click &lt;strong>Event Label&lt;/strong>. You now have a page-by-page breakdown of ratings.&lt;/li>
+&lt;/ol>
+&lt;p>Here&amp;rsquo;s what the 4 columns represent:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Total Events&lt;/strong> is the total number of times that users clicked &lt;em>either&lt;/em> &lt;strong>Yes&lt;/strong> or &lt;strong>No&lt;/strong>.&lt;/li>
+&lt;li>&lt;strong>Unique Events&lt;/strong> provides a rough indication of how frequenly users are rating your pages per
+session. For example, suppose your &lt;strong>Total Events&lt;/strong> is 5000, and &lt;strong>Unique Events&lt;/strong> is 2500.
+This means that you have 2500 users who are rating 2 pages per session.&lt;/li>
+&lt;li>&lt;strong>Event Value&lt;/strong> isn&amp;rsquo;t that useful.&lt;/li>
+&lt;li>&lt;strong>Avg. Value&lt;/strong> is the aggregated rating for that page. The value is always between 0
+and 1. When users click &lt;strong>No&lt;/strong> a value of 0 is sent to Google Analytics. When users click
+&lt;strong>Yes&lt;/strong> a value of 1 is sent. You can think of it as a percentage. If a page has an
+&lt;strong>Avg. Value&lt;/strong> of 0.67, it means that 67% of users clicked &lt;strong>Yes&lt;/strong> and 33% clicked &lt;strong>No&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;p>The underlying Google Analytics infrastructure that stores the &amp;ldquo;was this page helpful?&amp;rdquo; data is
+called &lt;a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/events">Events&lt;/a>. See &lt;a href="https://github.com/google/docsy/pull/1/files">docsy pull request #1&lt;/a> to see exactly
+what happens when a user clicks &lt;strong>Yes&lt;/strong> or &lt;strong>No&lt;/strong>. It&amp;rsquo;s just a &lt;code>click&lt;/code> event listener that
+fires the Google Analytics JavaScript function for logging an Event, disables the &lt;strong>Yes&lt;/strong> and
+&lt;strong>No&lt;/strong> buttons, and shows the response text.&lt;/p>
+&lt;h3 id="disable-feedback-on-a-single-page">Disable feedback on a single page&lt;/h3>
+&lt;p>Add &lt;code>hide_feedback: true&lt;/code> to the page&amp;rsquo;s front matter.&lt;/p>
+&lt;h3 id="disable-feedback-on-all-pages">Disable feedback on all pages&lt;/h3>
+&lt;p>Set &lt;code>params.ui.feedback.enable&lt;/code> to &lt;code>false&lt;/code> in &lt;code>config.toml&lt;/code>:&lt;/p>
+&lt;pre>&lt;code>[params.ui.feedback]
+enable = false
+&lt;/code>&lt;/pre></description></item><item><title>Docs: Repository Links</title><link>/docs/adding-content/repository-links/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/adding-content/repository-links/</guid><description>
+&lt;p>The Docsy &lt;a href="/docs/adding-content/content/#adding-docs-and-blog-posts">docs and blog layouts&lt;/a> include links for readers to edit the page or create issues for your docs or project via your site&amp;rsquo;s source repository. The current generated links for each docs or blog page are:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Edit this page&lt;/strong>: Brings the user to an editable version of the page content in their fork (if available) of your docs repo. If the user doesn&amp;rsquo;t have a current fork of your docs repo, they are invited to create one before making their edit. The user can then create a pull request for your docs.&lt;/li>
+&lt;li>&lt;strong>Create documentation issue&lt;/strong>: Brings the user to a new issue form in your docs repo with the name of the current page as the issue&amp;rsquo;s title.&lt;/li>
+&lt;li>&lt;strong>Create project issue&lt;/strong> (optional): Brings the user to a new issue form in your project repo. This can be useful if you have separate project and docs repos and your users want to file issues against the project feature being discussed rather than your docs.&lt;/li>
+&lt;/ul>
+&lt;p>This page shows you how to configure these links using your &lt;code>config.toml&lt;/code> file.&lt;/p>
+&lt;p>Currently Docsy supports only GitHub repository links &amp;ldquo;out of the box&amp;rdquo;. If you are using another repository such as Bitbucket and would like generated repository links, feel free to &lt;a href="/docs/contribution-guidelines/">add a feature request or update our theme&lt;/a>.&lt;/p>
+&lt;h2 id="link-configuration">Link configuration&lt;/h2>
+&lt;p>There are three variables you can configure in &lt;code>config.toml&lt;/code> to set up links:&lt;/p>
+&lt;h3 id="github_repo">&lt;code>github_repo&lt;/code>&lt;/h3>
+&lt;p>The URL for your site&amp;rsquo;s source repository. This is used to generate the &lt;strong>Edit this page&lt;/strong> and &lt;strong>Create documentation issue&lt;/strong> links.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-toml" data-lang="toml">&lt;span style="color:#000">github_repo&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;https://github.com/google/docsy&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="github_subdir-optional">&lt;code>github_subdir&lt;/code> (optional)&lt;/h3>
+&lt;p>Specify a value here if your content directory is not in your repo&amp;rsquo;s root directory. For example, this site is in the &lt;code>userguide&lt;/code> subdirectory of its repo. Setting this value means that your edit links will go to the right page.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-toml" data-lang="toml">&lt;span style="color:#000">github_subdir&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;userguide&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="github_project_repo-optional">&lt;code>github_project_repo&lt;/code> (optional)&lt;/h3>
+&lt;p>Specify a value here if you have a separate project repo and you&amp;rsquo;d like your users to be able to create issues against your project from the relevant docs. The &lt;strong>Create project issue&lt;/strong> link appears only if this is set.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-toml" data-lang="toml">&lt;span style="color:#000">github_project_repo&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;https://github.com/google/docsy&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="github_branch-optional">&lt;code>github_branch&lt;/code> (optional)&lt;/h3>
+&lt;p>Specify a value here if you have would like to reference a different branch for the other github settings like &lt;strong>Edit this page&lt;/strong> or &lt;strong>Create project isssue&lt;/strong>.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-toml" data-lang="toml">&lt;span style="color:#000">github_brach&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;release&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Hugo Content Tips</title><link>/docs/best-practices/site-guidance/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/best-practices/site-guidance/</guid><description>
+&lt;p>Docsy is a theme for the &lt;a href="https://gohugo.io/">Hugo&lt;/a> static site
+generator. If you&amp;rsquo;re not already familiar with Hugo and, in particular, its version of Markdown, this page provides some
+useful tips and potential gotchas for adding and editing content for your site. Feel free to add your own!&lt;/p>
+&lt;h2 id="nested-lists">Nested lists&lt;/h2>
+&lt;p>Hugo currently uses the &lt;a href="https://github.com/russross/blackfriday">Blackfriday&lt;/a> Markdown processor, which can be
+sensitive when it come to content that&amp;rsquo;s deeply nested in a list. In particular, be aware that
+&lt;a href="https://github.com/russross/blackfriday/issues/329">this known issue&lt;/a> can surface if or when you have multiple authors and
+other contributors who might mix &amp;lsquo;tabs&amp;rsquo; and &amp;lsquo;spaces&amp;rsquo; when indenting lists, or fail to indent properly.&lt;/p>
+&lt;p>An additional factor here is that because GitHub uses a different Markdown processor, GitHub markdown and the editor UI may
+render some nested lists properly, while Blackfriday might render that same content poorly. For example, the count in a
+numbered list might restart, or your nested content within a list is not indented
+(shows as a peer element instead of a nested child element). You may want to recommend in your contribution guidelines
+(&lt;a href="/docs/contribution-guidelines/#contributing-to-these-docs">as we do&lt;/a>) that contributors preview their content with Hugo
+(or use Netlify&amp;rsquo;s preview feature for PRs if that&amp;rsquo;s your chosen deployment tool) to ensure their content renders correctly
+with Blackfriday.&lt;/p>
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Tip&lt;/h4>
+&lt;a href="https://github.com/russross/blackfriday/issues/329#issuecomment-277602856">Per comments on the known issue&lt;/a>, some
+users have found that using 4 spaces instead of a &amp;lsquo;tab&amp;rsquo; results in consistent behavior. For example, consider
+configuring your local editor to use 4 spaces when the &lt;strong>Tab&lt;/strong> key is pressed.
+&lt;/div>
+&lt;h2 id="linking">Linking&lt;/h2>
+&lt;p>By default, regular relative URLs in links are left unchanged by Hugo (they&amp;rsquo;re still relative links in your site&amp;rsquo;s generated HTML), hence some hardcoded relative links like &lt;code>[relative cross-link](../../peer-folder/sub-file.md)&lt;/code> might behave unexpectedly compared to how they work on your local file system. You may find it helpful to use some of Hugo&amp;rsquo;s built-in &lt;a href="https://gohugo.io/content-management/cross-references/#use-ref-and-relref">link shortcodes&lt;/a> to avoid broken links in your generated site. For example a &lt;code>{&amp;lt; ref &amp;quot;filename.md&amp;quot; &amp;gt;}&lt;/code> link in Hugo will actually
+find and automatically link to your file named &lt;code>filename.md&lt;/code>.&lt;/p>
+&lt;p>Note, however, that &lt;code>ref&lt;/code> and &lt;code>relref&lt;/code> links don&amp;rsquo;t work with &lt;code>_index&lt;/code> or &lt;code>index&lt;/code> files (for example, this site&amp;rsquo;s &lt;a href="/docs/adding-content/">content landing page&lt;/a>): you&amp;rsquo;ll need to use regular Markdown links to section landing or other index pages. Specify these links relative to the site&amp;rsquo;s root URL, for example: &lt;code>/docs/adding-content/&lt;/code>.&lt;/p>
+&lt;p>&lt;a href="/docs/adding-content/content/#working-with-links">Learn more about linking&lt;/a>.&lt;/p></description></item><item><title>Docs: Organizing Your Content</title><link>/docs/best-practices/organizing-content/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/best-practices/organizing-content/</guid><description>
+&lt;p>If you have a look at our &lt;a href="https://example.docsy.dev/about/">Example Site&lt;/a>, you&amp;rsquo;ll see that we&amp;rsquo;ve organized
+the Documentation section into a number of subsections, each with some recommendations about what you might put
+in that section.&lt;/p>
+&lt;h2 id="do-i-need-to-use-this-structure">Do I need to use this structure?&lt;/h2>
+&lt;p>Absolutely not! The site structure in the Example Site was created to meet the needs of large docsets for large
+products with lots of features, potential tasks, and reference elements. For a simpler docset (like this one!),
+it&amp;rsquo;s fine to just structure your docs around specific features that your users need to know about. Even for larger
+documentation sets, you may find that the structure isn&amp;rsquo;t useful &amp;ldquo;as is&amp;rdquo;, or that you don&amp;rsquo;t need to use all the
+section types.&lt;/p>
+&lt;p>We do recommend that (as we&amp;rsquo;ve done here) you provide at least:&lt;/p>
+&lt;ul>
+&lt;li>An &lt;strong>Overview&lt;/strong> of the product (either on the docs landing page or a separate Overview page) that tells the user
+why they should be interested in your project.&lt;/li>
+&lt;li>A &lt;strong>Getting Started&lt;/strong> page.&lt;/li>
+&lt;li>Some &lt;strong>Examples&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;p>You may also want to create some tasks/how-tos for your project&amp;rsquo;s features. Feel free to copy this Docsy user guide
+site or even just the docs section instead if you like this simpler structure better.&lt;/p>
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Tip&lt;/h4>
+If you want to copy this guide, be aware that its &lt;a href="https://github.com/google/docsy/tree/master/userguide">source files&lt;/a> are &lt;em>inside&lt;/em> the Docsy theme repo, and so it doesn&amp;rsquo;t have its own &lt;code>themes/&lt;/code> directory: instead, we run &lt;code>hugo server --themesDir ../..&lt;/code> to use Docsy from its parent directory. You may want to either copy the site and &lt;a href="/docs/getting-started/#option-2-use-the-docsy-theme-in-your-own-site">add a &lt;code>themes/&lt;/code> directory with Docsy&lt;/a>, or just copy the &lt;code>docs/&lt;/code> folder into your existing site&amp;rsquo;s content root.
+&lt;/div>
+&lt;p>&lt;a href="/docs/adding-content/content/#organizing-your-documentation">Learn more about how Hugo and Docsy use folders and other files to organize your site&lt;/a>.&lt;/p>
+&lt;h2 id="why-this-structure">Why this structure?&lt;/h2>
+&lt;p>We based the Example Site structure on our own experiences creating (and using) large documentation sets for
+different types of project and on user research carried out on some of our bigger sites. In user studies we saw that
+users cared most about and immediately looked for a Get Started or Getting Started section
+(so they could, well, get started), and some examples to explore and copy, so we made those into prominent top-level doc
+sections in our site. Users also wanted to find &amp;ldquo;recipes&amp;rdquo; that they could easily look up to perform specific tasks and
+put together to create their own applications or projects, so we suggest that you add this kind of content as Tasks.
+Other content types such as conceptual docs, reference docs, and end-to-end tutorials are less important for all doc sets,
+particularly for smaller projects. We emphasize in our Example Site that these sections are optional.&lt;/p>
+&lt;p>We hope to improve the Example Site structure further as we learn more about how users interact with technical
+documentation, particularly for Open Source projects.&lt;/p>
+&lt;h2 id="writing-style-guide">Writing style guide&lt;/h2>
+&lt;p>This guide and the example site just address how to organize your documentation content into pages and sections. For some guidance on how to organize and write the content in each page, we recommend the
+&lt;a href="https://developers.google.com/style/">Google Developer Documentation Style Guide&lt;/a>, particularly the
+&lt;a href="https://developers.google.com/style/highlights">Style Guide Highlights&lt;/a>.&lt;/p></description></item></channel></rss>
