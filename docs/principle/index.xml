@@ -1,1 +1,115 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AutoImporter – 原理</title><link>/docs/principle/</link><description>Recent content in 原理 on AutoImporter</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sat, 12 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="/docs/principle/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Importer</title><link>/docs/principle/importer/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/importer/</guid><description/></item><item><title>Docs: Rule</title><link>/docs/principle/rule/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/rule/</guid><description/></item><item><title>Docs: Filter</title><link>/docs/principle/filter/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/filter/</guid><description/></item></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AutoImporter – 原理</title><link>/docs/principle/</link><description>Recent content in 原理 on AutoImporter</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sat, 12 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="/docs/principle/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Importer</title><link>/docs/principle/importer/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/importer/</guid><description>
+&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;p>&lt;strong>Importer&lt;/strong>是&lt;strong>AutoImporter&lt;/strong>的功能入口，主要负责对&lt;strong>导入功能类型&lt;/strong>&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>进行划分分类，对处理时机进行限制。&lt;/p>
+&lt;hr>
+&lt;h2 id="类别">类别&lt;/h2>
+&lt;p>&lt;strong>Importer&lt;/strong>按照功能性，分为以下三个大类别：&lt;/p>
+&lt;h3 id="propertysetting">PropertySetting&lt;/h3>
+&lt;blockquote>
+&lt;p>用于资源属性的设置。例如设置&lt;strong>Asset&lt;/strong>的&lt;strong>Label&lt;/strong>、&lt;strong>AssetBundleName&lt;/strong>等。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="assetsetting">AssetSetting&lt;/h3>
+&lt;blockquote>
+&lt;p>用于资源导入配置的设置。例如设置&lt;strong>TextureImporter&lt;/strong>、&lt;strong>MeshImporter&lt;/strong>参数等。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="assetnotice">AssetNotice&lt;/h3>
+&lt;blockquote>
+&lt;p>用于监控资源的变更。&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;h2 id="作用时机">作用时机&lt;/h2>
+&lt;p>&lt;strong>Importer&lt;/strong>是基于Unity的&lt;strong>AssetPostprocessor&lt;/strong>。因此，时机也跟&lt;strong>AssetPostprocessor&lt;/strong>的接口有关。&lt;/p>
+&lt;p>分别有以下几种：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th align="left">接口名称&lt;/th>
+&lt;th align="left">说明&lt;/th>
+&lt;th align="left">备注&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td align="left">OnPreprocessModel&lt;/td>
+&lt;td align="left">模型资源导入前&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPostprocessModel&lt;/td>
+&lt;td align="left">模型资源导入后&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPreprocessTexture&lt;/td>
+&lt;td align="left">纹理资源导入前&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPostprocessTexture&lt;/td>
+&lt;td align="left">纹理资源导入后&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPreprocessAudio&lt;/td>
+&lt;td align="left">音效资源导入前&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPostprocessAudio&lt;/td>
+&lt;td align="left">音效资源导入后&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPostprocessAll&lt;/td>
+&lt;td align="left">所有资源变更后&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPostprocessImport&lt;/td>
+&lt;td align="left">资源导入后&lt;/td>
+&lt;td align="left">基于OnPostprocessAll扩展&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPostprocessDelete&lt;/td>
+&lt;td align="left">资源删除后&lt;/td>
+&lt;td align="left">基于OnPostprocessAll扩展&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPostprocessMove&lt;/td>
+&lt;td align="left">资源移动后&lt;/td>
+&lt;td align="left">基于OnPostprocessAll扩展&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPostprocessMoveFrom&lt;/td>
+&lt;td align="left">资源移出后&lt;/td>
+&lt;td align="left">基于OnPostprocessAll扩展&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;section class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1" role="doc-endnote">
+&lt;p>这里不是资源类型的原因是因为有部分Importer并不只是作用单一资源种类 &lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/section></description></item><item><title>Docs: Rule</title><link>/docs/principle/rule/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/rule/</guid><description>
+&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;p>&lt;strong>Rule&lt;/strong>是整个&lt;strong>AutoImporter&lt;/strong>最核心的部分，它定义了资源导入时需要&lt;strong>干什么&lt;/strong>，如果你还记得&lt;a href="/docs/getting-started/#%E8%AE%BE%E7%BD%AErule">入门指南&lt;/a>中的&lt;strong>LabelsRule&lt;/strong>的设置。那么，你就能大概了解了&lt;strong>Rule&lt;/strong>的作用。&lt;/p>
+&lt;p>在&lt;strong>入门指南&lt;/strong>中，我们为&lt;strong>LabelsRule&lt;/strong>增加了两个Label标签“hello”、“world”，当匹配的资源导入时，&lt;strong>LabelsRule&lt;/strong>就会将资源的Label值设成“hello”、“world”。&lt;/p>
+&lt;h2 id="补充">补充&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>Rule&lt;/strong>与&lt;strong>Importer&lt;/strong>是一一对应的。例如&lt;strong>LabelsImporter&lt;/strong>和&lt;strong>LabelsRule&lt;/strong>。&lt;/li>
+&lt;li>一个&lt;strong>Importer&lt;/strong>是可以拥有多个&lt;strong>Rule&lt;/strong>。&lt;/li>
+&lt;/ul></description></item><item><title>Docs: Filter</title><link>/docs/principle/filter/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/filter/</guid><description>
+&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;p>&lt;strong>Filter&lt;/strong>的作用是负责过滤筛选资源，然后将过滤后的资源交给&lt;strong>Rule&lt;/strong>进行设置。&lt;/p>
+&lt;p>而&lt;strong>Filter&lt;/strong>有两种类型：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Matcher&lt;/strong>是匹配器，用于捕获符合的资源。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Ignore&lt;/strong>是忽略器，用于忽略掉不需要处理的资源&lt;/p>
+&lt;/li>
+&lt;/ul></description></item></channel></rss>

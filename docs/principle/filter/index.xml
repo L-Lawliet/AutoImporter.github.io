@@ -1,1 +1,34 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AutoImporter – Filter</title><link>/docs/principle/filter/</link><description>Recent content in Filter on AutoImporter</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sat, 12 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="/docs/principle/filter/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Matcher</title><link>/docs/principle/filter/matcher/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/filter/matcher/</guid><description/></item><item><title>Docs: Ignore</title><link>/docs/principle/filter/ignore/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/filter/ignore/</guid><description/></item></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AutoImporter – Filter</title><link>/docs/principle/filter/</link><description>Recent content in Filter on AutoImporter</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sat, 12 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="/docs/principle/filter/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Matcher</title><link>/docs/principle/filter/matcher/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/filter/matcher/</guid><description>
+&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;p>在&lt;strong>Filter&lt;/strong>原理页面已经提到过了，&lt;strong>Matcher&lt;/strong>的作用其实就是捕获符合的资源，然后将资源交给&lt;strong>Rule&lt;/strong>进行设置。&lt;/p>
+&lt;h2 id="添加">添加&lt;/h2>
+&lt;h2 id="foldermatcher">FolderMatcher&lt;/h2>
+&lt;p>这是一个&lt;strong>文件夹匹配器&lt;/strong>。用于对文件夹进行匹配使用的。&lt;/p>
+&lt;p>有两种使用方案。&lt;/p>
+&lt;ul>
+&lt;li>第一种是关联文件夹的&lt;strong>Asset&lt;/strong>，只需要将文件夹拖拽到xxx即可。&lt;/li>
+&lt;li>另外一种是编写文件夹路径，可以对还没存在的文件夹进行匹配。&lt;/li>
+&lt;/ul>
+&lt;h2 id="regexmatcher">RegexMatcher&lt;/h2>
+&lt;p>这是一个&lt;strong>正则匹配器&lt;/strong>。你可以通过编写&lt;strong>正则&lt;/strong>对资源路径进行匹配，是最自由的匹配器之一。&lt;/p>
+&lt;blockquote>
+&lt;p>编写完后，你可以在下面填写测试地址。然后点击&lt;strong>Test Match&lt;/strong>按钮进行测试。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="组合">组合&lt;/h2>
+&lt;p>多个&lt;strong>Matcher&lt;/strong>是可以组合一起使用，以达到同时匹配多个目录、资源类型等功能。&lt;/p>
+&lt;p>例如，我们可以使用三个&lt;strong>FolderMatcher&lt;/strong>分别对&lt;strong>A&lt;/strong>、&lt;strong>B&lt;/strong>、&lt;strong>C&lt;/strong>目录进行匹配。然后进行相同的&lt;strong>Rule&lt;/strong>操作。&lt;/p>
+&lt;h2 id="扩展">扩展&lt;/h2>
+&lt;p>可以通过继承&lt;strong>IMatcher&lt;/strong>来扩展匹配器。详细可以查看&lt;a href="/docs/extension/">&lt;strong>Matcher扩展&lt;/strong>&lt;/a>&lt;/p></description></item><item><title>Docs: Ignore</title><link>/docs/principle/filter/ignore/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/filter/ignore/</guid><description>
+&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;p>&lt;strong>Ignore&lt;/strong>与&lt;a href="matcher/">&lt;strong>Matcher&lt;/strong>&lt;/a>作用恰恰相反，&lt;strong>Ignore&lt;/strong>是对符合的资源进行忽略。&lt;/p>
+&lt;h2 id="添加">添加&lt;/h2>
+&lt;h2 id="assetignore">AssetIgnore&lt;/h2>
+&lt;p>这是一个&lt;strong>资源忽略器&lt;/strong>。可以增加多个&lt;strong>资源&lt;/strong>或者&lt;strong>目录&lt;/strong>用于忽略。&lt;/p>
+&lt;blockquote>
+&lt;p>AssetIgnore是唯一的，一个&lt;strong>Rule&lt;/strong>只能存在一个。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="组合">组合&lt;/h2>
+&lt;p>既然多个&lt;strong>Matcher&lt;/strong>是可以组合一起使用。那么，多个&lt;strong>Ignore&lt;/strong>也是可以组合使用。&lt;/p>
+&lt;p>当然，按照&lt;strong>Filter&lt;/strong>的特性。&lt;strong>Matcher&lt;/strong>和&lt;strong>Ignore&lt;/strong>也是共同组合作用的。&lt;/p>
+&lt;h2 id="扩展">扩展&lt;/h2>
+&lt;p>可以通过继承&lt;strong>IIgnore&lt;/strong>来扩展匹配器。详细可以查看&lt;a href="/docs/extension/">&lt;strong>Ignore扩展&lt;/strong>&lt;/a>&lt;/p></description></item></channel></rss>

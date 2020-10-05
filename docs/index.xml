@@ -1,1 +1,137 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AutoImporter – AutoImporter文档</title><link>/docs/</link><description>Recent content in AutoImporter文档 on AutoImporter</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sat, 12 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Importer</title><link>/docs/principle/importer/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/importer/</guid><description/></item><item><title>Docs: Rule</title><link>/docs/principle/rule/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/rule/</guid><description/></item><item><title>Docs: LabelImporter</title><link>/docs/importers/labelimporter/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/importers/labelimporter/</guid><description/></item><item><title>Docs: TextureImporter</title><link>/docs/importers/textureimporter/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/importers/textureimporter/</guid><description/></item><item><title>Docs: Matcher</title><link>/docs/principle/filter/matcher/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/filter/matcher/</guid><description/></item><item><title>Docs: Ignore</title><link>/docs/principle/filter/ignore/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/filter/ignore/</guid><description/></item><item><title>Docs: Importer列表区域</title><link>/docs/view/importer-window/importerlistview/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/importer-window/importerlistview/</guid><description/></item><item><title>Docs: Rule列表区域</title><link>/docs/view/importer-window/rulelistview/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/importer-window/rulelistview/</guid><description/></item><item><title>Docs: Inpector 窗口</title><link>/docs/view/inpector-window/importerinfo/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/inpector-window/importerinfo/</guid><description/></item><item><title>Docs: Rule信息</title><link>/docs/view/inpector-window/ruleinfo/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/inpector-window/ruleinfo/</guid><description/></item></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AutoImporter – AutoImporter文档</title><link>/docs/</link><description>Recent content in AutoImporter文档 on AutoImporter</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sat, 12 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Importer</title><link>/docs/principle/importer/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/importer/</guid><description>
+&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;p>&lt;strong>Importer&lt;/strong>是&lt;strong>AutoImporter&lt;/strong>的功能入口，主要负责对&lt;strong>导入功能类型&lt;/strong>&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>进行划分分类，对处理时机进行限制。&lt;/p>
+&lt;hr>
+&lt;h2 id="类别">类别&lt;/h2>
+&lt;p>&lt;strong>Importer&lt;/strong>按照功能性，分为以下三个大类别：&lt;/p>
+&lt;h3 id="propertysetting">PropertySetting&lt;/h3>
+&lt;blockquote>
+&lt;p>用于资源属性的设置。例如设置&lt;strong>Asset&lt;/strong>的&lt;strong>Label&lt;/strong>、&lt;strong>AssetBundleName&lt;/strong>等。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="assetsetting">AssetSetting&lt;/h3>
+&lt;blockquote>
+&lt;p>用于资源导入配置的设置。例如设置&lt;strong>TextureImporter&lt;/strong>、&lt;strong>MeshImporter&lt;/strong>参数等。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="assetnotice">AssetNotice&lt;/h3>
+&lt;blockquote>
+&lt;p>用于监控资源的变更。&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;h2 id="作用时机">作用时机&lt;/h2>
+&lt;p>&lt;strong>Importer&lt;/strong>是基于Unity的&lt;strong>AssetPostprocessor&lt;/strong>。因此，时机也跟&lt;strong>AssetPostprocessor&lt;/strong>的接口有关。&lt;/p>
+&lt;p>分别有以下几种：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th align="left">接口名称&lt;/th>
+&lt;th align="left">说明&lt;/th>
+&lt;th align="left">备注&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td align="left">OnPreprocessModel&lt;/td>
+&lt;td align="left">模型资源导入前&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPostprocessModel&lt;/td>
+&lt;td align="left">模型资源导入后&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPreprocessTexture&lt;/td>
+&lt;td align="left">纹理资源导入前&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPostprocessTexture&lt;/td>
+&lt;td align="left">纹理资源导入后&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPreprocessAudio&lt;/td>
+&lt;td align="left">音效资源导入前&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPostprocessAudio&lt;/td>
+&lt;td align="left">音效资源导入后&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPostprocessAll&lt;/td>
+&lt;td align="left">所有资源变更后&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPostprocessImport&lt;/td>
+&lt;td align="left">资源导入后&lt;/td>
+&lt;td align="left">基于OnPostprocessAll扩展&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPostprocessDelete&lt;/td>
+&lt;td align="left">资源删除后&lt;/td>
+&lt;td align="left">基于OnPostprocessAll扩展&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPostprocessMove&lt;/td>
+&lt;td align="left">资源移动后&lt;/td>
+&lt;td align="left">基于OnPostprocessAll扩展&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">OnPostprocessMoveFrom&lt;/td>
+&lt;td align="left">资源移出后&lt;/td>
+&lt;td align="left">基于OnPostprocessAll扩展&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;section class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1" role="doc-endnote">
+&lt;p>这里不是资源类型的原因是因为有部分Importer并不只是作用单一资源种类 &lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/section></description></item><item><title>Docs: Rule</title><link>/docs/principle/rule/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/rule/</guid><description>
+&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;p>&lt;strong>Rule&lt;/strong>是整个&lt;strong>AutoImporter&lt;/strong>最核心的部分，它定义了资源导入时需要&lt;strong>干什么&lt;/strong>，如果你还记得&lt;a href="/docs/getting-started/#%E8%AE%BE%E7%BD%AErule">入门指南&lt;/a>中的&lt;strong>LabelsRule&lt;/strong>的设置。那么，你就能大概了解了&lt;strong>Rule&lt;/strong>的作用。&lt;/p>
+&lt;p>在&lt;strong>入门指南&lt;/strong>中，我们为&lt;strong>LabelsRule&lt;/strong>增加了两个Label标签“hello”、“world”，当匹配的资源导入时，&lt;strong>LabelsRule&lt;/strong>就会将资源的Label值设成“hello”、“world”。&lt;/p>
+&lt;h2 id="补充">补充&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>Rule&lt;/strong>与&lt;strong>Importer&lt;/strong>是一一对应的。例如&lt;strong>LabelsImporter&lt;/strong>和&lt;strong>LabelsRule&lt;/strong>。&lt;/li>
+&lt;li>一个&lt;strong>Importer&lt;/strong>是可以拥有多个&lt;strong>Rule&lt;/strong>。&lt;/li>
+&lt;/ul></description></item><item><title>Docs: LabelImporter</title><link>/docs/importers/labelimporter/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/importers/labelimporter/</guid><description/></item><item><title>Docs: TextureImporter</title><link>/docs/importers/textureimporter/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/importers/textureimporter/</guid><description/></item><item><title>Docs: Matcher</title><link>/docs/principle/filter/matcher/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/filter/matcher/</guid><description>
+&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;p>在&lt;strong>Filter&lt;/strong>原理页面已经提到过了，&lt;strong>Matcher&lt;/strong>的作用其实就是捕获符合的资源，然后将资源交给&lt;strong>Rule&lt;/strong>进行设置。&lt;/p>
+&lt;h2 id="添加">添加&lt;/h2>
+&lt;h2 id="foldermatcher">FolderMatcher&lt;/h2>
+&lt;p>这是一个&lt;strong>文件夹匹配器&lt;/strong>。用于对文件夹进行匹配使用的。&lt;/p>
+&lt;p>有两种使用方案。&lt;/p>
+&lt;ul>
+&lt;li>第一种是关联文件夹的&lt;strong>Asset&lt;/strong>，只需要将文件夹拖拽到xxx即可。&lt;/li>
+&lt;li>另外一种是编写文件夹路径，可以对还没存在的文件夹进行匹配。&lt;/li>
+&lt;/ul>
+&lt;h2 id="regexmatcher">RegexMatcher&lt;/h2>
+&lt;p>这是一个&lt;strong>正则匹配器&lt;/strong>。你可以通过编写&lt;strong>正则&lt;/strong>对资源路径进行匹配，是最自由的匹配器之一。&lt;/p>
+&lt;blockquote>
+&lt;p>编写完后，你可以在下面填写测试地址。然后点击&lt;strong>Test Match&lt;/strong>按钮进行测试。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="组合">组合&lt;/h2>
+&lt;p>多个&lt;strong>Matcher&lt;/strong>是可以组合一起使用，以达到同时匹配多个目录、资源类型等功能。&lt;/p>
+&lt;p>例如，我们可以使用三个&lt;strong>FolderMatcher&lt;/strong>分别对&lt;strong>A&lt;/strong>、&lt;strong>B&lt;/strong>、&lt;strong>C&lt;/strong>目录进行匹配。然后进行相同的&lt;strong>Rule&lt;/strong>操作。&lt;/p>
+&lt;h2 id="扩展">扩展&lt;/h2>
+&lt;p>可以通过继承&lt;strong>IMatcher&lt;/strong>来扩展匹配器。详细可以查看&lt;a href="/docs/extension/">&lt;strong>Matcher扩展&lt;/strong>&lt;/a>&lt;/p></description></item><item><title>Docs: Ignore</title><link>/docs/principle/filter/ignore/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/principle/filter/ignore/</guid><description>
+&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;p>&lt;strong>Ignore&lt;/strong>与&lt;a href="matcher/">&lt;strong>Matcher&lt;/strong>&lt;/a>作用恰恰相反，&lt;strong>Ignore&lt;/strong>是对符合的资源进行忽略。&lt;/p>
+&lt;h2 id="添加">添加&lt;/h2>
+&lt;h2 id="assetignore">AssetIgnore&lt;/h2>
+&lt;p>这是一个&lt;strong>资源忽略器&lt;/strong>。可以增加多个&lt;strong>资源&lt;/strong>或者&lt;strong>目录&lt;/strong>用于忽略。&lt;/p>
+&lt;blockquote>
+&lt;p>AssetIgnore是唯一的，一个&lt;strong>Rule&lt;/strong>只能存在一个。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="组合">组合&lt;/h2>
+&lt;p>既然多个&lt;strong>Matcher&lt;/strong>是可以组合一起使用。那么，多个&lt;strong>Ignore&lt;/strong>也是可以组合使用。&lt;/p>
+&lt;p>当然，按照&lt;strong>Filter&lt;/strong>的特性。&lt;strong>Matcher&lt;/strong>和&lt;strong>Ignore&lt;/strong>也是共同组合作用的。&lt;/p>
+&lt;h2 id="扩展">扩展&lt;/h2>
+&lt;p>可以通过继承&lt;strong>IIgnore&lt;/strong>来扩展匹配器。详细可以查看&lt;a href="/docs/extension/">&lt;strong>Ignore扩展&lt;/strong>&lt;/a>&lt;/p></description></item><item><title>Docs: Importer列表区域</title><link>/docs/view/importer-window/importerlistview/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/importer-window/importerlistview/</guid><description/></item><item><title>Docs: Rule列表区域</title><link>/docs/view/importer-window/rulelistview/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/importer-window/rulelistview/</guid><description/></item><item><title>Docs: Inpector 窗口</title><link>/docs/view/inpector-window/importerinfo/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/inpector-window/importerinfo/</guid><description/></item><item><title>Docs: Rule信息</title><link>/docs/view/inpector-window/ruleinfo/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/inpector-window/ruleinfo/</guid><description/></item></channel></rss>
