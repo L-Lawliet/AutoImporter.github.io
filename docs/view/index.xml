@@ -1,1 +1,50 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AutoImporter – 界面</title><link>/docs/view/</link><description>Recent content in 界面 on AutoImporter</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sat, 12 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="/docs/view/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Importer 窗口</title><link>/docs/view/importer-window/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/importer-window/</guid><description/></item><item><title>Docs: Inpector 窗口</title><link>/docs/view/inpector-window/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/inpector-window/</guid><description/></item><item><title>Docs: Setting 窗口</title><link>/docs/view/setting-window/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/setting-window/</guid><description/></item><item><title>Docs: Log 窗口</title><link>/docs/view/log-window/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/log-window/</guid><description/></item></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AutoImporter – 界面</title><link>/docs/view/</link><description>Recent content in 界面 on AutoImporter</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sat, 12 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="/docs/view/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Importer 窗口</title><link>/docs/view/importer-window/</link><pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate><guid>/docs/view/importer-window/</guid><description>
+&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;blockquote>
+&lt;p>ImporterWindow是整个AutoImporter工具最重要的窗口。&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>它主要作用是用于管理所有的Importer和Rule。它可以增加、删除、启用和关闭Importer/Rule，它也可以管理Importer和Rule之间的关系。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="打开importer窗口">打开Importer窗口&lt;/h2>
+&lt;blockquote>
+&lt;p>点击菜单&lt;strong>Tools&lt;/strong>-&lt;strong>AutoImporter&lt;/strong>-&lt;strong>Importers&lt;/strong>打开Importer窗口。&lt;/p>
+&lt;/blockquote>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/view/importer_window/1.1.open_importer_window.png" alt="Open Importer Window" />
+&lt;figcaption>
+&lt;p class="font-weight-light">1.1 Importer窗口入口&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;h2 id="功能区介绍">功能区介绍&lt;/h2>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/view/importer_window/1.2.importer_window_areas.png" alt="Importer Window Areas" />
+&lt;figcaption>
+&lt;p class="font-weight-light">1.2 Importer功能区&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;blockquote>
+&lt;p>ImporterWindow分为以下三个功能区：&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="菜单栏">菜单栏&lt;/h3>
+&lt;blockquote>
+&lt;p>常用功能按钮&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>&lt;strong>Record按钮&lt;/strong>：点击打开&lt;a href="/docs/view/record-window/">Record窗口&lt;/a>&lt;/li>
+&lt;li>&lt;strong>Setting按钮&lt;/strong>：点击打开&lt;a href="/docs/view/setting-window/">Setting窗口&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="importer列表视图">Importer列表视图&lt;/h3>
+&lt;blockquote>
+&lt;p>展示和管理Importer列表&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>详细介绍请看：&lt;a href="/docs/view/importer-window/importerlistview/">Importer列表区域&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="rule列表视图">Rule列表视图&lt;/h3>
+&lt;blockquote>
+&lt;p>展示和管理Rule列表&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>详细介绍请看：&lt;a href="/docs/view/importer-window/rulelistview/">Rule列表区域&lt;/a>&lt;/p>
+&lt;/blockquote></description></item><item><title>Docs: Inpector 窗口</title><link>/docs/view/inpector-window/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/inpector-window/</guid><description/></item><item><title>Docs: Setting 窗口</title><link>/docs/view/setting-window/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/setting-window/</guid><description/></item><item><title>Docs: Record 窗口</title><link>/docs/view/record-window/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/record-window/</guid><description/></item></channel></rss>
