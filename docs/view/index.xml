@@ -4,7 +4,7 @@
 &lt;p>ImporterWindow是整个AutoImporter工具最重要的窗口。&lt;/p>
 &lt;/blockquote>
 &lt;blockquote>
-&lt;p>它主要作用是用于管理所有的Importer和Rule。它可以增加、删除、启用和关闭Importer/Rule，它也可以管理Importer和Rule之间的关系。&lt;/p>
+&lt;p>它主要作用是用于管理所有的Importer和Rule。它可以增加、删除、激活和停用Importer/Rule，它也可以管理Importer和Rule之间的关系。&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="打开importer窗口">打开Importer窗口&lt;/h2>
 &lt;blockquote>

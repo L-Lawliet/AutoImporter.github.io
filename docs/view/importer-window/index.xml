@@ -1,1 +1,61 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AutoImporter – Importer 窗口</title><link>/docs/view/importer-window/</link><description>Recent content in Importer 窗口 on AutoImporter</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sun, 24 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/docs/view/importer-window/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Importer列表区域</title><link>/docs/view/importer-window/importerlistview/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/importer-window/importerlistview/</guid><description/></item><item><title>Docs: Rule列表区域</title><link>/docs/view/importer-window/rulelistview/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/importer-window/rulelistview/</guid><description/></item></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AutoImporter – Importer 窗口</title><link>/docs/view/importer-window/</link><description>Recent content in Importer 窗口 on AutoImporter</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sun, 24 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/docs/view/importer-window/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Importer列表区域</title><link>/docs/view/importer-window/importerlistview/</link><pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate><guid>/docs/view/importer-window/importerlistview/</guid><description>
+&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;blockquote>
+&lt;ul>
+&lt;li>图1.1显示的就是Importer列表区域。&lt;/li>
+&lt;li>最上方的是菜单栏，用于添加/删除Importer。&lt;/li>
+&lt;li>下方为列表，可以拖动每个Importer，以控制Importer的优先级。&lt;/li>
+&lt;/ul>
+&lt;/blockquote>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/view/importer_window/importer_list_view/1.1.importer_list.png" alt="Importer List" />
+&lt;figcaption>
+&lt;p class="font-weight-light">1.1 Importer列表&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;h2 id="添加删除importer">添加/删除Importer&lt;/h2>
+&lt;h3 id="添加">添加&lt;/h3>
+&lt;blockquote>
+&lt;p>点击&amp;quot;+&amp;quot;按钮后，会弹出可添加的Importer列表。&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>只要是继承&lt;strong>BaseImporter&lt;/strong>的非抽象类都会显示在列表里。&lt;/p>
+&lt;/blockquote>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/view/importer_window/importer_list_view/2.1.add_importer.png" alt="Add Importer" />
+&lt;figcaption>
+&lt;p class="font-weight-light">2.1 Add Importer&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;h3 id="删除">删除&lt;/h3>
+&lt;blockquote>
+&lt;p>点击&amp;rdquo;-&amp;ldquo;按钮后，会删除当前选中的Importer。&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>&lt;strong>P.S.如果只是临时停用Importer，请使用&lt;a href="#%E5%90%AF%E7%94%A8%E5%81%9C%E7%94%A8importer">启用停用importer&lt;/a>&lt;/strong>&lt;/p>
+&lt;/blockquote>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/view/importer_window/importer_list_view/2.2.remove_importer.png" alt="Remove Importer" />
+&lt;figcaption>
+&lt;p class="font-weight-light">2.2 Remove Importer&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;h2 id="启用停用importer">启用/停用Importer&lt;/h2>
+&lt;blockquote>
+&lt;p>每个Importer项中的，右边都有一个小圆点按钮（&lt;strong>未激活&lt;/strong>时为&lt;font color=orange>橙色&lt;/font>，&lt;strong>激活&lt;/strong>时为&lt;font color=green>绿色&lt;/font>），点击变成&lt;font color=green>绿色&lt;/font>状态时就可以激活Importer。让importer在资源导入时，起到作用。&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>&lt;strong>P.S.默认情况下，Importer是未激活状态的，这是防止刚好有资源变更触发了新添加的配置中的Importer。&lt;/strong>&lt;/p>
+&lt;/blockquote>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/view/importer_window/importer_list_view/3.1.deactive_state.png" alt="Deactive State" />
+&lt;figcaption>
+&lt;p class="font-weight-light">3.1 Deactive State&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/view/importer_window/importer_list_view/3.2.active_state.png" alt="Active State" />
+&lt;figcaption>
+&lt;p class="font-weight-light">3.2 Active State&lt;/p>
+&lt;/figcaption>
+&lt;/figure></description></item><item><title>Docs: Rule列表区域</title><link>/docs/view/importer-window/rulelistview/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/importer-window/rulelistview/</guid><description/></item></channel></rss>
