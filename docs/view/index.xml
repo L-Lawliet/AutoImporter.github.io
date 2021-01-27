@@ -47,4 +47,26 @@
 &lt;/blockquote>
 &lt;blockquote>
 &lt;p>详细介绍请看：&lt;a href="/docs/view/importer-window/rulelistview/">Rule列表区域&lt;/a>&lt;/p>
-&lt;/blockquote></description></item><item><title>Docs: Inpector 窗口</title><link>/docs/view/inpector-window/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/inpector-window/</guid><description/></item><item><title>Docs: Setting 窗口</title><link>/docs/view/setting-window/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/setting-window/</guid><description/></item><item><title>Docs: Record 窗口</title><link>/docs/view/record-window/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/record-window/</guid><description/></item></channel></rss>
+&lt;/blockquote></description></item><item><title>Docs: Inpector 窗口</title><link>/docs/view/inpector-window/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/inpector-window/</guid><description/></item><item><title>Docs: Setting 窗口</title><link>/docs/view/setting-window/</link><pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate><guid>/docs/view/setting-window/</guid><description>
+&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;blockquote>
+&lt;p>与大多数工具一样，AutoImporter也是有设置面板的，这是用于对工具进行配置，以进行定制化的配置&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>而Setting窗口的入口也很容易找，它就在Unity菜单中：&lt;strong>Editor&lt;/strong>-&lt;strong>Project Settings&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/view/setting_window/1.1.settings_menu.png" alt="Settings menu" />
+&lt;figcaption>
+&lt;p class="font-weight-light">1.1 Settings menu&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;ul>
+&lt;li>点击菜单后，就会弹出系统的设置窗口。然后你就能在左侧菜单栏找到有AutoImporter菜单。&lt;/li>
+&lt;/ul>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/view/setting_window/1.2.settings_window.png" alt="Settings Window" />
+&lt;figcaption>
+&lt;p class="font-weight-light">1.2 Settings Window&lt;/p>
+&lt;/figcaption>
+&lt;/figure></description></item><item><title>Docs: Record 窗口</title><link>/docs/view/record-window/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/record-window/</guid><description/></item></channel></rss>

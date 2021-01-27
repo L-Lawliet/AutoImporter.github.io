@@ -274,4 +274,55 @@
 &lt;/figure>
 &lt;blockquote>
 &lt;p>&lt;strong>P.S.每个Rule项内容区都可以自定义绘制的内容或样式，详情可以查看&lt;a href="/docs/extension/">扩展&lt;/a>&lt;/strong>&lt;/p>
-&lt;/blockquote></description></item><item><title>Docs: Inpector 窗口</title><link>/docs/view/inpector-window/importerinfo/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/inpector-window/importerinfo/</guid><description/></item><item><title>Docs: Rule信息</title><link>/docs/view/inpector-window/ruleinfo/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/inpector-window/ruleinfo/</guid><description/></item></channel></rss>
+&lt;/blockquote></description></item><item><title>Docs: Inpector 窗口</title><link>/docs/view/inpector-window/importerinfo/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/inpector-window/importerinfo/</guid><description/></item><item><title>Docs: Rule信息</title><link>/docs/view/inpector-window/ruleinfo/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/inpector-window/ruleinfo/</guid><description/></item><item><title>Docs: AutoImporter设置</title><link>/docs/view/setting-window/autoimportersetting/</link><pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate><guid>/docs/view/setting-window/autoimportersetting/</guid><description>
+&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;blockquote>
+&lt;p>AutoImporter Setting视图是最主要的设置面板，它用于设置工具的常用功能。&lt;/p>
+&lt;/blockquote>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/view/setting_window/auto_importer_setting/1.1.settings_window.png" alt="Settings Window" />
+&lt;figcaption>
+&lt;p class="font-weight-light">1.1 Settings Window&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;h2 id="importer">Importer&lt;/h2>
+&lt;ul>
+&lt;li>Auto Importer：是否自动导入&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>如果关闭，则需要手动点击菜单以触发导入（Assets/AutoImporter/Import或者Assets/AutoImporter/DesignatedImport/*）&lt;br>
+&lt;strong>P.S.待实现功能&lt;/strong>&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>Is Silent Import：是否静默导入&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>如果是，则导入过程中不会出现任何的提示框（或进度条）&lt;br>
+&lt;strong>P.S.待实现功能&lt;/strong>&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>Need To Affirm：是否需要二次确认&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>如果是，则导入前，资源数量大于&lt;strong>Affirm Limit&lt;/strong>时，会弹出二次确认框&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>Affirm Limit：需要二次确认的资源数量&lt;/li>
+&lt;/ul>
+&lt;h2 id="log">Log&lt;/h2>
+&lt;ul>
+&lt;li>Log Level：日志等级
+&lt;ul>
+&lt;li>Debug：调试模式&lt;/li>
+&lt;li>Log：显示普通/错误日志&lt;/li>
+&lt;li>Error：只显示错误日志&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="setting-path">Setting Path&lt;/h2>
+&lt;ul>
+&lt;li>配置目录地址&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>P.S.配置是可以更换目录地址，方便适应项目需要。&lt;/p>
+&lt;/blockquote></description></item></channel></rss>
