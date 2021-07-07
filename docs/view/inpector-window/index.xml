@@ -1,1 +1,93 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AutoImporter – Inpector 窗口</title><link>/docs/view/inpector-window/</link><description>Recent content in Inpector 窗口 on AutoImporter</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sat, 12 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="/docs/view/inpector-window/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Inpector 窗口</title><link>/docs/view/inpector-window/importerinfo/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/inpector-window/importerinfo/</guid><description/></item><item><title>Docs: Rule信息</title><link>/docs/view/inpector-window/ruleinfo/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/inpector-window/ruleinfo/</guid><description/></item></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AutoImporter – Inpector 窗口</title><link>/docs/view/inpector-window/</link><description>Recent content in Inpector 窗口 on AutoImporter</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sat, 12 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="/docs/view/inpector-window/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Importer 信息</title><link>/docs/view/inpector-window/importerinfo/</link><pubDate>Tue, 06 Jul 2021 00:00:00 +0000</pubDate><guid>/docs/view/inpector-window/importerinfo/</guid><description>
+&lt;h1 id="介绍">介绍&lt;/h1>
+&lt;p>在&lt;a href="/docs/view/importer-window/importerlistview">Importer界面&lt;/a>中，选中其中一个Importer项，Inpector界面就会显示对应的Importer信息，这个时候，我们就可以随心所欲的编辑Importer了。&lt;/p>
+&lt;h1 id="信息">信息&lt;/h1>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/view/inpector_window/importer_info/2.1.inpector.png" alt="Inpector Window" />
+&lt;figcaption>
+&lt;p class="font-weight-light">2.1 Inpector Window&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;blockquote>
+&lt;p>由于Importer只是Rule的容器，因此，它的信息其实很简单，只有以下三部分组成。&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>
+&lt;p>Title&lt;/p>
+&lt;blockquote>
+&lt;p>Importer的标题。代表了这个Importer叫什么名称。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;li>
+&lt;p>Describe&lt;/p>
+&lt;blockquote>
+&lt;p>用于描述这个Importer具体作用的。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;li>
+&lt;p>Revert/Apply&lt;/p>
+&lt;blockquote>
+&lt;p>操作完Importer的信息后，需要点击&lt;strong>Apply&lt;/strong>按钮进行确认，这样才能使变更生效。如果不需要变更，可以点击&lt;strong>Revert&lt;/strong>按钮。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;/ul></description></item><item><title>Docs: Rule 信息</title><link>/docs/view/inpector-window/ruleinfo/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/inpector-window/ruleinfo/</guid><description>
+&lt;h1 id="介绍">介绍&lt;/h1>
+&lt;p>在&lt;a href="/docs/view/importer-window/rulelistview">Rule界面&lt;/a>中，选中其中一个Rule项，Inpector界面就会显示对应的Rule信息，这个时候，我们就可以随心所欲的编辑Rule了。&lt;/p>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/view/inpector_window/rule_info/1.1.inpector.png" alt="Inpector Window" />
+&lt;figcaption>
+&lt;p class="font-weight-light">1.1 Inpector Window&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;blockquote>
+&lt;p>一个Rule主要由下面几个部分组成：基础信息、Filter列表、Rule参数设置、Filter设置&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="基础信息">基础信息&lt;/h1>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/view/inpector_window/rule_info/2.1.rule_info.png" alt="Rule Info" />
+&lt;figcaption>
+&lt;p class="font-weight-light">2.1 Rule Info&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;ul>
+&lt;li>
+&lt;p>Title&lt;/p>
+&lt;blockquote>
+&lt;p>Rule的标题。代表了这个Rule叫什么名称。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;li>
+&lt;p>Describe&lt;/p>
+&lt;blockquote>
+&lt;p>用于描述这个Rule具体作用的。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;/ul>
+&lt;h1 id="filter列表">Filter列表&lt;/h1>
+&lt;p>在&lt;a href="/docs/principle/filter">Filter原理&lt;/a>我们说过，Rule要经过每个Filter处理过才能生效。以下分别是&lt;strong>Matcher列表&lt;/strong>和&lt;strong>Ignore列表&lt;/strong>。&lt;/p>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/view/inpector_window/rule_info/3.1.filter_list.png" alt="Filter List" />
+&lt;figcaption>
+&lt;p class="font-weight-light">3.1 Filter List&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;h1 id="rule参数设置">Rule参数设置&lt;/h1>
+&lt;p>接下来有一个页签组，一般第一页为Rule的参数页面。&lt;/p>
+&lt;blockquote>
+&lt;p>由于每个种类的Importer对应的参数都不一样，这里就不多介绍，可以到&lt;a href="/docs/importers/">Importers介绍&lt;/a>查看对应的参数。&lt;/p>
+&lt;/blockquote>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/view/inpector_window/rule_info/4.1.rule_parameters.png" alt="Rule Parameters" />
+&lt;figcaption>
+&lt;p class="font-weight-light">4.1 Rule Parameters&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;h1 id="filter设置">Filter设置&lt;/h1>
+&lt;p>页签组后面分别有&lt;strong>Matcher&lt;/strong>和&lt;strong>Ignore&lt;/strong>两个页签，分别对应两种Filter，可以设置Filter的参数。&lt;/p>
+&lt;blockquote>
+&lt;p>详细可以查看&lt;a href="/docs/filters/">Filter介绍&lt;/a>。&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="revertapply">Revert/Apply&lt;/h1>
+&lt;blockquote>
+&lt;p>操作完Rule的信息后，需要点击&lt;strong>Apply&lt;/strong>按钮进行确认，这样才能使变更生效。如果不需要变更，可以点击&lt;strong>Revert&lt;/strong>按钮。&lt;/p>
+&lt;/blockquote></description></item></channel></rss>

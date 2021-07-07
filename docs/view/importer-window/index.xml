@@ -62,6 +62,10 @@
 &lt;h2 id="importer内容区">Importer内容区&lt;/h2>
 &lt;blockquote>
 &lt;p>对比&lt;a href="/docs/view/importer-window/rulelistview/#rule%E5%86%85%E5%AE%B9%E5%8C%BA">Rule列表区域&lt;/a>丰富的内容区，Importer项可显示的信息就相对少而且固定。只会显示Importer的“标题（Title）”、“类型（Type）”、“描述（Description）”&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="编辑">编辑&lt;/h2>
+&lt;blockquote>
+&lt;p>点击Importer项后，&lt;a href="/docs/view/inpector-window/importerinfo">Inpector界面&lt;/a>就会显示此Importer的详细信息，并且提供编辑。&lt;/p>
 &lt;/blockquote></description></item><item><title>Docs: Rule列表区域</title><link>/docs/view/importer-window/rulelistview/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/view/importer-window/rulelistview/</guid><description>
 &lt;h2 id="介绍">介绍&lt;/h2>
 &lt;blockquote>
