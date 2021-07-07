@@ -1,1 +1,30 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AutoImporter – Importer介绍</title><link>/docs/importers/</link><description>Recent content in Importer介绍 on AutoImporter</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sat, 12 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="/docs/importers/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: LabelImporter</title><link>/docs/importers/labelimporter/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/importers/labelimporter/</guid><description/></item><item><title>Docs: TextureImporter</title><link>/docs/importers/textureimporter/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/importers/textureimporter/</guid><description/></item></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AutoImporter – Importer介绍</title><link>/docs/importers/</link><description>Recent content in Importer介绍 on AutoImporter</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sat, 12 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="/docs/importers/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: LabelImporter</title><link>/docs/importers/labelimporter/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/importers/labelimporter/</guid><description>
+&lt;h1 id="介绍">介绍&lt;/h1>
+&lt;p>LabelImporter算是最简单的Importer了，它的功能只有一个，就是把Rule中的Label标签，一个个设置到Filter认为符合的资源上。&lt;/p>
+&lt;blockquote>
+&lt;p>由于&lt;a href="/docs/getting-started">Getting Started&lt;/a>已经详细介绍了如何创建Importer、Rule和Filter，因此这里直奔主题。&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="rule项">Rule项&lt;/h1>
+&lt;p>LabelRule项在Rule项的基础上，显示了Label列表：这是此Rule需要设置的所有Label标签。&lt;/p>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/importers/label_importer/2.1.rule_item.png" alt="Rule Item" />
+&lt;figcaption>
+&lt;p class="font-weight-light">2.1 Rule Item&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;h1 id="参数">参数&lt;/h1>
+&lt;p>点击LabelRule项，就可以在Inpector窗口中，设置Rule的参数。&lt;/p>
+&lt;figure class="ml-3 text-center">
+&lt;img src="/images/docs/importers/label_importer/3.1.rule_parameters.png" alt="Rule Parameters" />
+&lt;figcaption>
+&lt;p class="font-weight-light">3.1 Rule Parameters&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>如图3.1，参数很简单，只有两个：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Ignore Folder&lt;/strong>：是否忽略文件夹的设置，只要勾选，此Rule就不会对文件夹设置Label&lt;/li>
+&lt;li>&lt;strong>Asset Labels&lt;/strong>：需要设置的资源标签组。&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>P.S.空的Label会在设置是忽略掉。&lt;/p>
+&lt;/blockquote></description></item><item><title>Docs: TextureImporter</title><link>/docs/importers/textureimporter/</link><pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate><guid>/docs/importers/textureimporter/</guid><description/></item></channel></rss>
